@@ -1,18 +1,18 @@
-import HomeComponent from "./Homepage";
-import ProfileComponent from "./Profile";
-import LoginComponent from "./Login";
+import HomeComponent from "./page-components/Homepage";
+import ProfileComponent from "./page-components/Profile";
+import LoginComponent from "./page-components/Login";
 import {Routes, Route} from "react-router";
-import { configureStore } from '@reduxjs/toolkit';
-import {Provider} from "react-redux";
-
-const store = configureStore({reducer: {}});
+import NavigationBar from "./shared-components/NavigationBar";
 
 function Coffee() {
     return(
-        <Provider store={store}>
-            <div>
+            <div className="container mt-2 pt-2 border">
+
+                {/*render the navigation bar on every screen*/}
+                <NavigationBar/>
+
+                {/* Routing occurs for each page */}
                 <Routes>
-                    // '/*' added to path to allow for child routing
                     <Route index element={<HomeComponent/>}/>
                     <Route path="home/*"
                            element={<HomeComponent/>}/>
@@ -22,7 +22,6 @@ function Coffee() {
                            element={<LoginComponent/>}/>
                 </Routes>
             </div>
-        </Provider>
     );
 }
 export default Coffee
