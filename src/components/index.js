@@ -12,12 +12,13 @@ function Coffee() {
         <Provider store={store}>
             <div>
                 <Routes>
+                    // '/*' added to path to allow for child routing
                     <Route index element={<HomeComponent/>}/>
-                    <Route path="home"
+                    <Route path="home/*"
                            element={<HomeComponent/>}/>
-                    <Route path="profile"
+                    <Route path="profile/*"
                            element={<ProfileComponent/>}/>
-                    <Route path="login"
+                    <Route path="login/*"
                            element={<LoginComponent/>}/>
                 </Routes>
             </div>

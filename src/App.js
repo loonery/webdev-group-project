@@ -1,5 +1,5 @@
 import './App.css';
-import Coffee from "./coffee";
+import Coffee from "./components";
 import {BrowserRouter} from 'react-router-dom';
 import {Routes, Route} from 'react-router';
 
