@@ -9,7 +9,11 @@ const NavigationTab = ({activePath, tabName}) => {
      */
 
     const resolvedPath = useResolvedPath(activePath);
+
+    // matching the path the user is currently on with the path associated with this navigationTab
     const isActive = useMatch({path: resolvedPath.pathname});
+
+
     const navigationLinkString = "nav-link" + (isActive ? ' active' : '');
 
     return (

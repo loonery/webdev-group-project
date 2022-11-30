@@ -14,7 +14,7 @@ function Coffee() {
                 {/* Routing occurs for each page */}
                 <Routes>
                     <Route index element={<HomeComponent/>}/>
-                    <Route path="home/*"
+                    <Route path="/*"
                            element={<HomeComponent/>}/>
                     <Route path="profile/*"
                            element={<ProfileComponent/>}/>
