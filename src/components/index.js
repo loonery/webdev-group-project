@@ -2,13 +2,13 @@ import HomeComponent from "./page-components/Homepage";
 import ProfileComponent from "./page-components/Profile";
 import LoginComponent from "./page-components/Login";
 import {Routes, Route} from "react-router";
-import NavigationBar from "./shared-components/NavigationBar";
+import NavigationBar from "./NavigationBar";
 
 function Coffee() {
     return(
-            <div className="container mt-2 pt-2 border">
+            <div className="container mt-2 pt-2">
 
-                {/*render the navigation bar on every screen*/}
+                {/* render the navigation bar on every screen for a logged in user */}
                 <NavigationBar/>
 
                 {/* Routing occurs for each page */}

@@ -13,16 +13,14 @@ const NavigationBar = () => {
     ]
 
     return(
-        <>
-            <ul className="nav nav-pills nav-justified pb-2">
-
-                {/* map each object in 'tabs' to the navigation tab component we need to create */}
-                {tabs.map((tab, index) => (
-                    <NavigationTab key={index} activePath={tab.activePath} tabName={tab.tabName}></NavigationTab>
+            <div className="border-bottom pb-3 pt-2 mb-4">
+                <ul className="nav nav-pills nav-justified">
+                    {/* map each object in 'tabs' to the navigation tab component we need to create */}
+                    {tabs.map((tab, index) => (
+                        <NavigationTab key={index} activePath={tab.activePath} tabName={tab.tabName}></NavigationTab>
                     ))}
-            </ul>
-        </>
-
+                </ul>
+            </div>
     );
 }
 export default NavigationBar;
