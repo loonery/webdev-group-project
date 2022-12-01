@@ -1,5 +1,6 @@
 import Ingredient from "./Ingredient";
 import RecipeStep from "./Steps";
+import EditStep from "./Steps/EditStep";
 
 const CreateRecipe = () => {
 
@@ -92,7 +93,7 @@ const CreateRecipe = () => {
                                 <RecipeStep/>
                                 <RecipeStep/>
                                 <RecipeStep/>
-                                <RecipeStep/>
+                                <EditStep/>
                             </ol>
                             <div className="mt-2">
                                 <button className="btn btn-secondary w-100">Add Step</button>
@@ -101,8 +102,6 @@ const CreateRecipe = () => {
                     </div>
                 </div>
             </div>
-
-
         </>
         );
 }

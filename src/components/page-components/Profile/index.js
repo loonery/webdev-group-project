@@ -15,7 +15,7 @@ const Profile = () => {
                          height="150px"
                          width="150px"/>
                 </div>
-                <div className="col-9 fs-3">
+                <div className="fs-3">
                     <div>{userName}</div>
                     <div>{userHandle}</div>
                 </div>
@@ -24,7 +24,6 @@ const Profile = () => {
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3">
                 General Profile Information
             </div>
-
 
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3">
                 Recipes and Recipe Collections

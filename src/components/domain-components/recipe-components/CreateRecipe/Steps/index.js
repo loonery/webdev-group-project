@@ -1,3 +1,6 @@
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faX} from "@fortawesome/free-solid-svg-icons/faX";
+import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 const RecipeStep = () => {
 
     return(
@@ -6,10 +9,17 @@ const RecipeStep = () => {
                 <div className="fw-bold">Brief step</div>
                 <div className="text-secondary">This is where the more specific step details go</div>
             </div>
-            <button className="btn btn-outline-dark rounded-pill ms-4 mt-1">X</button>
-            <button className="btn btn-outline-info rounded-pill ms-4 mt-1">X</button>
+
+            {/*delete step from recipe*/}
+            <button className="btn btn-outline-dark rounded-pill ms-4 mt-1">
+                <FontAwesomeIcon icon={faX}/>
+            </button>
+
+            {/* edit step in recipe */}
+            <button className="btn btn-outline-dark rounded-pill ms-4 mt-1">
+                <FontAwesomeIcon icon={faPencil}/>
+            </button>
         </li>
     );
-
 }
 export default RecipeStep;
