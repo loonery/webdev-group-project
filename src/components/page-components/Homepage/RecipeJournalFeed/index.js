@@ -1,5 +1,5 @@
 import react from 'react';
-import RecipeJournalItem from "./RecipeJournalItem";
+import RecipeJournalItem from "../../../domain-components/recipe-components/RecipeJournal/RecipeJournalItem";
 
 const RecipeJournalFeed = () => {
     return(

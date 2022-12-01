@@ -1,8 +1,8 @@
 import HomeComponent from "./page-components/Homepage";
 import ProfileComponent from "./page-components/Profile";
-import LoginComponent from "./page-components/Login";
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
+import CreateRecipe from "./domain-components/recipe-components/CreateRecipe";
 
 function Coffee() {
     return(
@@ -18,8 +18,8 @@ function Coffee() {
                            element={<HomeComponent/>}/>
                     <Route path="profile/*"
                            element={<ProfileComponent/>}/>
-                    <Route path="login/*"
-                           element={<LoginComponent/>}/>
+                    <Route path="search/*"
+                           element={<CreateRecipe/>}/>
                 </Routes>
             </div>
     );
