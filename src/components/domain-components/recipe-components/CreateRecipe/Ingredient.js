@@ -1,6 +1,4 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
-import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
 import {faX} from "@fortawesome/free-solid-svg-icons";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 

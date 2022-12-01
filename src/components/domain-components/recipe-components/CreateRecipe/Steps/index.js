@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faX} from "@fortawesome/free-solid-svg-icons/faX";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
-const RecipeStep = () => {
+const RecipeStepEditRecipe = () => {
 
     return(
         <li className="list-group-item d-flex justify-content-between align-items-start">
@@ -22,4 +22,4 @@ const RecipeStep = () => {
         </li>
     );
 }
-export default RecipeStep;
+export default RecipeStepEditRecipe;

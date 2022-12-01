@@ -1,11 +1,10 @@
 import Ingredient from "./Ingredient";
-import RecipeStepEditRecipe from "./Steps";
+import RecipeStep from "./Steps";
 import EditStep from "./Steps/EditStep";
 
-const CreateAndEditRecipe = () => {
+const RecipeDetails = () => {
 
     // todo: style the textareas to not allow resizing
-
     return(
         <>
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3 pe-3">
@@ -27,19 +26,19 @@ const CreateAndEditRecipe = () => {
 
                         <div className="mt-3">
                             <textarea className="form-control"
-                                   id="recipe-notes"
-                                   rows={3}
-                                   placeholder="What specific information should others know about this recipe?"
-                                   value=""
+                                      id="recipe-notes"
+                                      rows={3}
+                                      placeholder="What specific information should others know about this recipe?"
+                                      value=""
                             />
                         </div>
 
                         <div className="mt-3">
                             <textarea className="form-control"
-                                   id="recipe-description"
-                                   placeholder="How would you describe this recipe for yourself and for others?"
-                                   rows={3}
-                                   value=""
+                                      id="recipe-description"
+                                      placeholder="How would you describe this recipe for yourself and for others?"
+                                      rows={3}
+                                      value=""
                             />
                         </div>
                     </div>
@@ -88,11 +87,11 @@ const CreateAndEditRecipe = () => {
                         <div className="fs-2 border-0 border-top">Recipe Steps</div>
                         <div className="mt-3">
                             <ol className="list-group list-group-numbered">
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
+                                <RecipeStep/>
+                                <RecipeStep/>
+                                <RecipeStep/>
+                                <RecipeStep/>
+                                <RecipeStep/>
                                 <EditStep/>
                             </ol>
                             <div className="mt-2">
@@ -103,6 +102,6 @@ const CreateAndEditRecipe = () => {
                 </div>
             </div>
         </>
-        );
+    );
 }
-export default CreateAndEditRecipe;
+export default RecipeDetails;
