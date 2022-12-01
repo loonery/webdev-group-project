@@ -12,7 +12,6 @@ const UserInfoSmall = () => {
 
     const userStatistics = [
         {},
-
     ]
 
     return(

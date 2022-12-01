@@ -4,7 +4,6 @@ const RecipeJournalItem = () => {
     const userName = "Coffee Beans";
     const date = new Date();
 
-
     return(
         <div className="border rounded-top rounded mb-3 ps-2 pt-2 ms-1 me-1">
 
@@ -18,6 +17,9 @@ const RecipeJournalItem = () => {
                              width="48px"
                              height="48px"
                         />
+
+                        <i className="fa-solid"></i>
+
                     </div>
 
                     {/*user's post information*/}
@@ -31,9 +33,11 @@ const RecipeJournalItem = () => {
 
                         <div className="fs-5">Post Title</div>
 
-                        <div>post text post text post text post text post text post text post text post text
-                            post text post text post text post text post text post text post text post text post text post text </div>
-
+                        <div>
+                            post text post text post text post text post text post text post text post text
+                            post text post text post text post text post text post text post text post text
+                            post text post text
+                        </div>
                     </div>
             </div>
 
