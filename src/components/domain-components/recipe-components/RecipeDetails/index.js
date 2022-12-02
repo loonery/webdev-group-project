@@ -2,14 +2,12 @@ import RecipeStep from "../CreateRecipe/Steps/Step";
 import Ingredient from "../CreateRecipe/Ingredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
-import {faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons/faArrowAltCircleLeft";
-import {faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons/faArrowCircleLeft";
-import {faX} from "@fortawesome/free-solid-svg-icons";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 
 const RecipeDetails = () => {
 
     const recipeName = "Ryan's Cortado";
+    const userProfilePicture = "./local_images/dummy_webdev_2.jpg";
     const recipeAuthor = 'Ryan Looney';
     const recipeDescription = "A cortado is a beverage consisting of espresso mixed with a roughly equal amount of" +
         " warm milk to reduce the acidity.[1][2] The milk in a cortado is steamed, but not frothy and \"texturized\" as in many Italian coffee drinks.[3] The cortado comes from Spain, most likely Madrid, where it is commonly served.["
@@ -20,10 +18,21 @@ const RecipeDetails = () => {
         <>
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3 pe-3">
                 <div className="d-flex justify-content-between">
-                    <div className="mr-auto">
+                    {/*back button*/}
+                    <div className="">
                         <button className="btn btn-outline-dark rounded-pill"><FontAwesomeIcon icon={faArrowLeft}/></button>
                     </div>
-                    <div className="ms-auto">
+
+                    <div className="">
+                        <img src={userProfilePicture}
+                             className="rounded-circle"
+                             height="75px"
+                             width="75px"
+                        />
+                    </div>
+
+                    {/*edit button*/}
+                    <div className="">
                         <button className="btn btn-outline-dark rounded-pill"><FontAwesomeIcon icon={faPencil}/></button>
                     </div>
                 </div>
@@ -44,8 +53,8 @@ const RecipeDetails = () => {
 
                         {/*Description of recipe*/}
                         <div className="mt-3">
-                            <div className="fs-5">Description</div>
-                            <div className="pt-2 pe-3 border-top rounded">
+                            <div className="fs-4 border-top mt-2 pt-2">Description</div>
+                            <div className="rounded pe-3">
                                 {recipeDescription}
                             </div>
                         </div>
@@ -53,8 +62,8 @@ const RecipeDetails = () => {
                         {/*recipe notes*/}
                         {/*todo: notes should only appear if there are notes (not a required field)*/}
                         <div className="mt-3">
-                            <div className="fs-5">Notes</div>
-                            <div className="pt-2 pb-3 pe-3 border-top rounded">
+                            <div className="fs-4">Notes</div>
+                            <div className="pb-3 pe-3 rounded">
                                 {recipeNotes}
                             </div>
                         </div>

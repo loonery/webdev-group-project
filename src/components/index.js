@@ -21,7 +21,7 @@ function Coffee() {
                     <Route path="profile/*"
                            element={<ProfileComponent/>}/>
                     <Route path="search/*"
-                           element={<RecipeDetails/>}/>
+                           element={<CreateAndEditRecipe/>}/>
                 </Routes>
             </div>
     );

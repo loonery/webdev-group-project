@@ -1,6 +1,12 @@
 import RecipeStepEditRecipe from "./Steps";
 import EditStep from "./Steps/EditStep";
 import EditIngredient from "./EditIngredient";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
+import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
+import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
+import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
+import {faCancel} from "@fortawesome/free-solid-svg-icons";
 
 const CreateAndEditRecipe = () => {
 
@@ -9,6 +15,18 @@ const CreateAndEditRecipe = () => {
     return(
         <>
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3 pe-3">
+
+                <div className="d-flex pb-4">
+                    {/*back button*/}
+                    <div className="me-auto">
+                        <button className="btn btn-outline-dark rounded-pill"><FontAwesomeIcon icon={faCancel}/></button>
+                    </div>
+
+                    {/*edit button*/}
+                    <div>
+                        <button className="btn btn-outline-dark rounded-pill"><FontAwesomeIcon icon={faSave}/></button>
+                    </div>
+                </div>
 
                 {/*outer col houses the entire form*/}
                 <div className={"col"}>
