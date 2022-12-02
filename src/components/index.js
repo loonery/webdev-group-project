@@ -3,6 +3,7 @@ import ProfileComponent from "./page-components/Profile";
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
 import RecipeDetails from "./domain-components/recipe-components/RecipeDetails";
+import CreateAndEditRecipe from "./domain-components/recipe-components/CreateRecipe";
 
 function Coffee() {
     return(
@@ -19,7 +20,7 @@ function Coffee() {
                     <Route path="profile/*"
                            element={<ProfileComponent/>}/>
                     <Route path="search/*"
-                           element={<RecipeDetails/>}/>
+                           element={<CreateAndEditRecipe/>}/>
                 </Routes>
             </div>
     );

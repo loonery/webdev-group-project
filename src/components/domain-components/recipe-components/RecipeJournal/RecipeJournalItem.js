@@ -100,7 +100,7 @@ const RecipeJournalItem = () => {
                 </div>
 
                 {/* this card footer houses the comments*/}
-                <div className="card-body">
+                <div className="card-footer">
                     <div className="d-flex">
                         <div className="mt-1">
                             <img className="rounded-circle"

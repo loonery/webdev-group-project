@@ -4,12 +4,10 @@ import EditIngredient from "./EditIngredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
 import {faCancel} from "@fortawesome/free-solid-svg-icons";
-import {faCancel} from "@fortawesome/free-solid-svg-icons";
 
 const CreateAndEditRecipe = () => {
 
     // todo: style the textareas to not allow resizing
-
     return(
         <>
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3 pe-3">
