@@ -1,6 +1,6 @@
-import Ingredient from "./Ingredient";
 import RecipeStepEditRecipe from "./Steps";
 import EditStep from "./Steps/EditStep";
+import EditIngredient from "./EditIngredient";
 
 const CreateAndEditRecipe = () => {
 
@@ -75,10 +75,10 @@ const CreateAndEditRecipe = () => {
                         <div className="mt-3">
                             {/*todo: factor this ul out into a list-based component*/}
                             <ul className="list-group">
-                                <Ingredient/>
-                                <Ingredient/>
-                                <Ingredient/>
-                                <Ingredient/>
+                                <EditIngredient/>
+                                <EditIngredient/>
+                                <EditIngredient/>
+                                <EditIngredient/>
                             </ul>
                         </div>
                     </div>

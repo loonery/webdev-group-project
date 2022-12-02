@@ -1,4 +1,4 @@
-const RecipeStepEditRecipe = () => {
+const RecipeStep = () => {
     return(
         <li className="list-group-item d-flex justify-content-between align-items-start">
             <div className="ms-2 me-auto">
@@ -8,4 +8,4 @@ const RecipeStepEditRecipe = () => {
         </li>
     );
 }
-export default RecipeStepEditRecipe;
+export default RecipeStep;
