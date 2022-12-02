@@ -2,10 +2,8 @@ import RecipeStepEditRecipe from "./Steps";
 import EditStep from "./Steps/EditStep";
 import EditIngredient from "./EditIngredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
-import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
-import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
+import {faCancel} from "@fortawesome/free-solid-svg-icons";
 import {faCancel} from "@fortawesome/free-solid-svg-icons";
 
 const CreateAndEditRecipe = () => {

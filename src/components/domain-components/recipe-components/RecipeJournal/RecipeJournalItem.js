@@ -1,56 +1,135 @@
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
+import AbridgedRecipe from "../AbridgedRecipe";
+import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
+
 const RecipeJournalItem = () => {
     // todo: delete static image source
     const imageSource = './local_images/dummy_webdev_2.jpg';
     const userName = "Coffee Beans";
-    const date = new Date();
+    const date = new Date().toDateString();
+    const postText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut" +
+        " labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
+    const likes = 10;
+    const comments = 3;
 
     // help from this website to construct general feeling of the component using cards
     // https://mdbootstrap.com/docs/standard/extended/comments/
 
+    // todo: add dynamic rendering of comments box
     return(
         <>
-        <div className="card mb-3 ms-2 mt-2 ms-1 me-1">
-            {/* user information section of the journal*/}
-            <div className="d-flex justify-content-evenly pb-2">
-                    {/* user profile picture */}
-                    <div className="ps-1 pt-2">
-                        <img src={imageSource}
-                             className="flex-fill rounded-circle"
-                             width="48px"
-                             height="48px"
-                        />
+            <div className="card mb-4">
+                <div className="card-header">
+                    <div>
+                        <span className="fw-bold fs-5">Post Title</span>
                     </div>
-
-                    {/*user's post information*/}
-                    <div className="ms-3">
-                        {/*user information in each recipe*/}
-                        <div>
-                            <div>{userName}</div>
-                            <div className="text-secondary">{date.toDateString()}</div>
-                        </div>
-
-                        <div className="fs-5">Post Title</div>
-
-                        <div className="pt-1">
-                            post text post text post text post text post text post text post text post text
-                            post text post text post text post text post text post text post text post text
-                            post text post text
-                        </div>
-                    </div>
-            </div>
-
-            {/*houses the comment section*/}
-            <div className="d-flex pb-2">
-                {/* user profile picture */}
-                <div className="me-auto">
-                    <textarea className="form-control">
-
-                    </textarea>
                 </div>
-                <div className={"border"}>aaa</div>
+                <div className="card-body">
 
+                    {/*this div houses the user's image, data and post metadata that appear in the post*/}
+                    <div className="d-flex">
+                        {/*user image on the recipe journal*/}
+                        <div className="mr-auto">
+                            <img className="rounded-circle"
+                                 height="70"
+                                 width={"70"}
+                                 src={imageSource}/>
+                        </div>
+
+                        {/* Rest of the post content sits within a flex to the right of the profile
+                         picture information*/}
+                        <div className="fs-6 ms-3">
+                            {/*user information in the card*/}
+                            <div className="pt-2">{userName}</div>
+                            <div className="text-secondary">{userName} - <span>{date}</span></div>
+                        </div>
+                    </div>
+
+                    {/*this div houses all post content */}
+                    <div className={"ps-4 pe-4"}>
+                        {/*user post text*/}
+                        <p className="mt-3">{postText}</p>
+
+                        {/*recipe information for recipe related to the post*/}
+                        <AbridgedRecipe/>
+
+                        {/*comment and like buttons, and stats */}
+                        <div className={'ps-2 pe-2'}>
+                            {/*todo: format this text to be significantly smaller*/}
+                            <span>
+                                {likes} likes | {comments} comments
+                            </span>
+                            <div className="float-end">
+                                <button className="btn">
+                                    <FontAwesomeIcon icon={regular('thumbs-up')}/> {likes}
+                                </button>
+                                <button className="btn ms-2">
+                                    <FontAwesomeIcon icon={regular('comment')}/> {comments}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/*card footer houses the comments section*/}
+                {/*todo : factor this out into a 'comment' component*/}
+                <div className="card-body border-bottom border-top">
+                    <div className="ps-2">Comments</div>
+                    <div>
+                        <ul className={"pt-1 list-group"}>
+                            <li className="list-group-item border-0">
+                                <div className="d-flex">
+                                    <div className="mt-1">
+                                        <img className="rounded-circle"
+                                             height="40"
+                                             width={"40"}
+                                             src={imageSource}/>
+                                    </div>
+
+                                    <div className="flex-grow-1 ms-3 form-group">
+                                        {/*user information in the card*/}
+                                        <div>{userName} - <span className="fs-6 text-secondary">{date}</span></div>
+                                        {/*user post text*/}
+                                        <p>{postText}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* this card footer houses the comments*/}
+                <div className="card-body">
+                    <div className="d-flex">
+                        <div className="mt-1">
+                            <img className="rounded-circle"
+                                 height="40"
+                                 width={"40"}
+                                 src={imageSource}/>
+                        </div>
+
+                        <div className="flex-grow-1 ms-3 form-group">
+                            <textarea className="form-control w-100"
+                                      placeholder="Say something nice, here!"
+                                      id="comments-box"
+                                      rows={3}
+                            />
+                        </div>
+
+                        <div className="mt-2 pt-1 ms-3">
+                            <div>
+                                <button type="button" className="w-100 btn btn-outline-dark btn-sm">Post</button>
+                            </div>
+                            <div>
+                                <button type="button" className="w-100 mt-2 btn btn-outline-dark btn-sm">
+                                    <FontAwesomeIcon icon={faCancel}/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
         </>
     );
 }
