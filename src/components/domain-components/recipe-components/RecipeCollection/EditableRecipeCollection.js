@@ -19,7 +19,9 @@ const EditableRecipeCollection = () => {
                     <div className="fs-3">
                         Collection Title
                         <span className="float-end pe-2">
-                            <FontAwesomeIcon icon={faPencil} size={"2xs"}/>
+                            <button className="btn btn-outline-dark">
+                                <FontAwesomeIcon icon={faPencil}/>
+                            </button>
                         </span>
                     </div>
                     <div className="fs-6 text-secondary">Collection description</div>

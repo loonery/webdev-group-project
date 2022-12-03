@@ -3,6 +3,8 @@ import ProfileComponent from "./page-components/Profile";
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
 import EditableRecipeCollection from "./domain-components/recipe-components/RecipeCollection/EditableRecipeCollection";
+import EditingRecipeCollection from "./domain-components/recipe-components/RecipeCollection/EditingRecipeCollection";
+import RecipeDetails from "./domain-components/recipe-components/RecipeDetails";
 
 function Coffee() {
     return(
@@ -19,7 +21,7 @@ function Coffee() {
                     <Route path="profile/*"
                            element={<ProfileComponent/>}/>
                     <Route path="search/*"
-                           element={<EditableRecipeCollection/>}/>
+                           element={<RecipeDetails/>}/>
                 </Routes>
             </div>
     );

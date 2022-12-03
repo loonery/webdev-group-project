@@ -1,6 +1,8 @@
 import AbridgedRecipe from "../AbridgedRecipe";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPencil} from "@fortawesome/free-solid-svg-icons";
+import {faSave, faX} from "@fortawesome/free-solid-svg-icons";
+import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
+import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 
 const EditingRecipeCollection = () => {
 
@@ -19,7 +21,8 @@ const EditingRecipeCollection = () => {
                     <div className="fs-3">
                         Collection Title
                         <span className="float-end pe-2">
-                            <FontAwesomeIcon icon={faPencil} size={"2xs"}/>
+                            <button className="btn btn-outline-dark mx-2"><FontAwesomeIcon icon={faCancel}/></button>
+                            <button className="btn btn-outline-dark mx-2"><FontAwesomeIcon icon={faSave}/></button>
                         </span>
                     </div>
                     <div className="fs-6 text-secondary">Collection description</div>
@@ -29,9 +32,28 @@ const EditingRecipeCollection = () => {
                 {/*todo : the abridged recipes should be fed data*/}
                 {recipeArray.map((recipe, index) => {
                     return(
-                        <li className="list-group-item"><AbridgedRecipe/></li>
+
+                        <li className="list-group-item">
+                            <div className="d-flex align-items-center">
+
+                                {/* remove recipe button */}
+                                <div className="mx-2">
+                                    <button className="btn btn-dark rounded-pill">
+                                        <FontAwesomeIcon icon={faX}/>
+                                    </button>
+                                </div>
+                                <div className="flex-grow-1"><AbridgedRecipe/></div>
+                            </div>
+                        </li>
                     );
                 })}
+
+                {/* add recipe button */}
+                <div className="d-flex justify-content-center">
+                    <button className="btn btn-outline-dark btn-rounded-pill w-100 m-2">
+                        <FontAwesomeIcon icon={faPlus}/>&ensp;Add Recipe to Collection
+                    </button>
+                </div>
             </ul>
         </div>
     );
