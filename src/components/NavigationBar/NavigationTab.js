@@ -20,7 +20,7 @@ const NavigationTab = ({activePath, tabName}) => {
     return (
         // todo: add more inline styling to nav links
         <li className="nav-item ps-1 pe-1">
-            <Link className={navigationLinkString} style={{backgroundColor: "darkgray", color: "black"}} to={activePath}>{tabName}</Link>
+            <Link className={navigationLinkString} to={activePath}>{tabName}</Link>
         </li>
     );
 }

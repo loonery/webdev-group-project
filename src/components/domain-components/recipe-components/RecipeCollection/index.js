@@ -1,1 +1,1 @@
-c
+// todo: here the recipe collection should conditionally render based upon the state of the user's credentials
