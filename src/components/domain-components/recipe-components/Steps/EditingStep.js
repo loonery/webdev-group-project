@@ -2,7 +2,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
 
-const EditStep = () => {
+const EditingStep = () => {
     return(
         <li className="list-group-item d-flex justify-content-between align-items-start">
             <div className="ms-2 flex-grow-1">
@@ -43,4 +43,4 @@ const EditStep = () => {
         </li>
     );
 }
-export default EditStep;
+export default EditingStep;

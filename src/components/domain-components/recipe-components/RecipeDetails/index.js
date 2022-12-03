@@ -1,5 +1,5 @@
-import RecipeStep from "../CreateRecipe/Steps/Step";
-import Ingredient from "../CreateRecipe/Ingredient";
+import StaticRecipeStep from "../Steps/StaticRecipeStep";
+import Ingredient from "../Ingredients/Ingredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
@@ -13,7 +13,7 @@ const RecipeDetails = () => {
         " warm milk to reduce the acidity.[1][2] The milk in a cortado is steamed, but not frothy and \"texturized\" as in many Italian coffee drinks.[3] The cortado comes from Spain, most likely Madrid, where it is commonly served.["
     const recipeNotes = "Takes about 10 minutes to prepare and serve.";
 
-    // todo: style the textareas to not allow resizing
+    // todo: style the text area to not allow resizing
     return(
         <>
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3 pe-3">
@@ -93,11 +93,11 @@ const RecipeDetails = () => {
                         <div className="fs-2 border-0 border-top">Recipe Steps</div>
                         <div className="mt-3">
                             <ol className="list-group list-group-numbered">
-                                <RecipeStep/>
-                                <RecipeStep/>
-                                <RecipeStep/>
-                                <RecipeStep/>
-                                <RecipeStep/>
+                                <StaticRecipeStep/>
+                                <StaticRecipeStep/>
+                                <StaticRecipeStep/>
+                                <StaticRecipeStep/>
+                                <StaticRecipeStep/>
                             </ol>
                         </div>
                     </div>

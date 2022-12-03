@@ -48,18 +48,22 @@ const RecipeJournalItem = () => {
 
                     {/*this div houses all post content */}
                     <div className={"ps-4 pe-4"}>
+
                         {/*user post text*/}
                         <p className="mt-3">{postText}</p>
 
                         {/*recipe information for recipe related to the post*/}
-                        <AbridgedRecipe/>
+                        <div className="border rounded"><AbridgedRecipe/></div>
 
                         {/*comment and like buttons, and stats */}
-                        <div className={'ps-2 pe-2'}>
+                        <div className={'pt-4 ps-2 pe-2'}>
                             {/*todo: format this text to be significantly smaller*/}
+                            {/*todo: Make the likes section a link to the list of people who liked this post*/}
                             <span>
                                 {likes} likes | {comments} comments
                             </span>
+
+                            {/* comment and like buttons */}
                             <div className="float-end">
                                 <button className="btn">
                                     <FontAwesomeIcon icon={regular('thumbs-up')}/> {likes}
@@ -73,7 +77,7 @@ const RecipeJournalItem = () => {
                 </div>
 
                 {/*card footer houses the comments section*/}
-                {/*todo : factor this out into a 'comment' component*/}
+                {/* todo : factor this out into a 'comment' component */}
                 <div className="card-body border-bottom border-top">
                     <div className="ps-2">Comments</div>
                     <div>

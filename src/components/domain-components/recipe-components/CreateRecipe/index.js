@@ -1,6 +1,6 @@
-import RecipeStepEditRecipe from "./Steps";
-import EditStep from "./Steps/EditStep";
-import EditIngredient from "./EditIngredient";
+import EditableStep from "../Steps/EditableStep";
+import EditingStep from "../Steps/EditingStep";
+import EditIngredient from "../Ingredients/EditIngredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
 import {faCancel} from "@fortawesome/free-solid-svg-icons";
@@ -102,12 +102,12 @@ const CreateAndEditRecipe = () => {
                         <div className="fs-2 border-0 border-top">Recipe Steps</div>
                         <div className="mt-3">
                             <ol className="list-group list-group-numbered">
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
-                                <RecipeStepEditRecipe/>
-                                <EditStep/>
+                                <EditableStep/>
+                                <EditableStep/>
+                                <EditableStep/>
+                                <EditableStep/>
+                                <EditableStep/>
+                                <EditingStep/>
                             </ol>
                             <div className="mt-2">
                                 <button className="btn btn-secondary w-100">Add Step</button>
