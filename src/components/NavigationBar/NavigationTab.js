@@ -10,14 +10,17 @@ const NavigationTab = ({activePath, tabName}) => {
 
     // get the resolved path of the path referred to this tab's link
     const resolvedPath = useResolvedPath(activePath);
+
     // matching the path the user is currently on with the path associated with this navigationTab
     const isActive = useMatch({path: resolvedPath.pathname});
+
     // assemble the className for each navigation tab
     const navigationLinkString = "nav-link border" + (isActive ? ' active' : '');
 
     return (
+        // todo: add more inline styling to nav links
         <li className="nav-item ps-1 pe-1">
-            <Link className={navigationLinkString} to={activePath}>{tabName}</Link>
+            <Link className={navigationLinkString} style={{backgroundColor: "darkgray", color: "black"}} to={activePath}>{tabName}</Link>
         </li>
     );
 }
