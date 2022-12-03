@@ -6,7 +6,7 @@ import EditableRecipeCollection from "./domain-components/recipe-components/Reci
 import EditingRecipeCollection from "./domain-components/recipe-components/RecipeCollection/EditingRecipeCollection";
 import RecipeDetails from "./domain-components/recipe-components/RecipeDetails";
 
-function Coffee() {
+function  Coffee() {
     return(
             <div className="container mt-2 pt-2">
 
