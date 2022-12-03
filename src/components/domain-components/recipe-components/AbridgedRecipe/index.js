@@ -18,7 +18,7 @@ const AbridgedRecipe = () => {
                     </div>
                 </div>
                 <div className="align-self-center">
-                    <button className={"btn btn-outline-dark"}>
+                    <button className={"btn btn-outline-dark ms-3"}>
                         <FontAwesomeIcon icon={solid('chevron-right')} size={"lg"}/>
                     </button>
                 </div>
