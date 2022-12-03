@@ -2,6 +2,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import AbridgedRecipe from "../AbridgedRecipe";
 import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
+import JournalStatsAndButtons from "./JournalStatsAndButtons";
 
 const RecipeJournalItem = () => {
     // todo: delete static image source
@@ -10,8 +11,7 @@ const RecipeJournalItem = () => {
     const date = new Date().toDateString();
     const postText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut" +
         " labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
-    const likes = 10;
-    const comments = 3;
+
 
     // help from this website to construct general feeling of the component using cards
     // https://mdbootstrap.com/docs/standard/extended/comments/
@@ -56,23 +56,8 @@ const RecipeJournalItem = () => {
                         <div className="border rounded"><AbridgedRecipe/></div>
 
                         {/*comment and like buttons, and stats */}
-                        <div className={'pt-4 ps-2 pe-2'}>
-                            {/*todo: format this text to be significantly smaller*/}
-                            {/*todo: Make the likes section a link to the list of people who liked this post*/}
-                            <span>
-                                {likes} likes | {comments} comments
-                            </span>
+                        <JournalStatsAndButtons/>
 
-                            {/* comment and like buttons */}
-                            <div className="float-end">
-                                <button className="btn">
-                                    <FontAwesomeIcon icon={regular('thumbs-up')}/> {likes}
-                                </button>
-                                <button className="btn ms-2">
-                                    <FontAwesomeIcon icon={regular('comment')}/> {comments}
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -80,6 +65,8 @@ const RecipeJournalItem = () => {
                 {/* todo : factor this out into a 'comment' component */}
                 <div className="card-body border-bottom border-top">
                     <div className="ps-2">Comments</div>
+
+                    {/* comments list component */}
                     <div>
                         <ul className={"pt-1 list-group"}>
                             <li className="list-group-item border-0">
@@ -104,6 +91,7 @@ const RecipeJournalItem = () => {
                 </div>
 
                 {/* this card footer houses the comments*/}
+                {/*todo: replace with my factored out component*/}
                 <div className="card-footer">
                     <div className="d-flex">
                         <div className="mt-1">
