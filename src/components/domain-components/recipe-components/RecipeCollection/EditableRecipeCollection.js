@@ -1,4 +1,4 @@
-import AbridgedRecipe from "../AbridgedRecipe";
+import AbridgedDomainItem from "../AbridgedRecipe";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil} from "@fortawesome/free-solid-svg-icons";
 
@@ -31,7 +31,7 @@ const EditableRecipeCollection = () => {
                 {/*todo : the abridged recipes should be fed data*/}
                 {recipeArray.map((recipe, index) => {
                     return(
-                        <li className="list-group-item"><AbridgedRecipe/></li>
+                        <li className="list-group-item"><AbridgedDomainItem/></li>
                     );
                 })}
             </ul>

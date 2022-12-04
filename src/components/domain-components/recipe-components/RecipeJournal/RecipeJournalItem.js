@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
-import AbridgedRecipe from "../AbridgedRecipe";
+import AbridgedDomainItem from "../AbridgedRecipe";
 import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
 import JournalStatsAndButtons from "./JournalStatsAndButtons";
 
@@ -53,7 +53,7 @@ const RecipeJournalItem = () => {
                         <p className="mt-3">{postText}</p>
 
                         {/*recipe information for recipe related to the post*/}
-                        <div className="border rounded"><AbridgedRecipe/></div>
+                        <div className="border rounded"><AbridgedDomainItem/></div>
 
                         {/*comment and like buttons, and stats */}
                         <JournalStatsAndButtons/>

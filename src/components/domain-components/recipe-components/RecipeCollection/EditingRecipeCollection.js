@@ -1,4 +1,4 @@
-import AbridgedRecipe from "../AbridgedRecipe";
+import AbridgedDomainItem from "../AbridgedRecipe";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSave, faX} from "@fortawesome/free-solid-svg-icons";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
@@ -42,7 +42,7 @@ const EditingRecipeCollection = () => {
                                         <FontAwesomeIcon icon={faX}/>
                                     </button>
                                 </div>
-                                <div className="flex-grow-1"><AbridgedRecipe/></div>
+                                <div className="flex-grow-1"><AbridgedDomainItem/></div>
                             </div>
                         </li>
                     );
