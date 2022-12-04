@@ -5,6 +5,7 @@ import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
 import JournalStatsAndButtons from "./JournalStatsAndButtons";
 
 const RecipeJournalItem = () => {
+    // todo: refactor as modal?
     // todo: delete static image source
     const imageSource = './local_images/dummy_webdev_2.jpg';
     const userName = "Coffee Beans";

@@ -1,36 +1,40 @@
 const Profile = () => {
 
-    const userImage = './local_images/dummy_webdev.jpg';
+    const imageSource = './local_images/dummy_webdev.jpg';
     const userName = "James Hoffman";
     const userHandle = "@jamesHoffman"
 
     return (
         <>
-            {/* profile banner image */}
-            <div className="row border rounded pt-3 ps-3 pb-3">
-                {/*profile picture */}
-                <div className="col-3">
-                    <img src={userImage}
-                         className="rounded-circle"
-                         height="150px"
-                         width="150px"/>
-                </div>
-                <div className="fs-3">
-                    <div>{userName}</div>
-                    <div>{userHandle}</div>
+            <div className="row my-3 mx-3 py-3">
+
+                {/* profile banner image */}
+                <div className="d-flex rounded border py-3 ps-3">
+                    <div className="">
+                        <img className="rounded-circle"
+                             height="150"
+                             width={"150"}
+                             src={imageSource}/>
+                    </div>
                 </div>
             </div>
 
-            <div className="row border rounded mt-3 pt-3 ps-3 pb-3">
-                General Profile Information
+
+            <div className="row border my-3 mx-3 py-3">
+                <div>
+                    General Profile Information
+                </div>
             </div>
 
-            <div className="row border rounded mt-3 pt-3 ps-3 pb-3">
-                Recipes and Recipe Collections
-            </div>
+            <div className="row border my-3 mx-3 py-3">
 
-            <div className="row border rounded mt-3 pt-3 ps-3 pb-3">
-                Your Brewing Network
+                <div className="col border rounded my-3 mx-3 py-3 px-3">
+                    Recipes and Recipe Collections
+                </div>
+
+                <div className="col border rounded my-3 mx-3 py-3 px-3">
+                    Your Brewing Network
+                </div>
             </div>
         </>
     );

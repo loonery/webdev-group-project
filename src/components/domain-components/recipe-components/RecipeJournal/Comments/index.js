@@ -9,6 +9,7 @@ const CommentsSection = () => {
 
                     {/*todo: map each comment object to a comment item here*/}
 
+
                 </div>
             </ul>
         </div>
