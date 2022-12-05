@@ -1,5 +1,6 @@
 import axios from 'axios';
-// TUITS_API is a constant referring to our middle tier
+
+// RECIPE_API is a string referring to our middle tier
 const API_BASE = process.env.REACT_APP_API_BASE;
 const RECIPE_API = `${API_BASE}/recipes`;
 
@@ -9,7 +10,7 @@ export const createRecipe = async (recipe) => {
     return response.data;
 }
 
-export const findRecipe = async () => {
+export const findRecipes = async () => {
     const response = await axios.get(RECIPE_API);
     const tuits = response.data;    // data in this response is the tuits array
     return tuits;                   // return the tuits array
