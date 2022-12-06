@@ -1,17 +1,14 @@
-import EditableStep from "../RecipeSteps/EditableStep";
-import EditingStep from "../RecipeSteps/EditingStep";
-import EditIngredient from "../RecipeIngredients/EditIngredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
 import {faCancel} from "@fortawesome/free-solid-svg-icons";
 
 const CreateAndEditRecipe = () => {
-
     // todo: style the textareas to not allow resizing
     return(
         <>
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3 pe-3">
 
+                {/*Back button and edit recipe button*/}
                 <div className="d-flex pb-4">
                     {/* back button */}
                     <div className="me-auto">
@@ -28,35 +25,6 @@ const CreateAndEditRecipe = () => {
                 <div className={"col"}>
 
                     {/*this row houses the recipe information section and its input fields*/}
-                    <div className={"row"}>
-                        <div className="fs-2">Recipe information</div>
-                        <div className="form-floating mt-3">
-                            <input className="form-control"
-                                   id="recipe-name"
-                                   placeholder="Recipe Name"
-                                   value=""
-                            />
-                            <label className="ms-2" htmlFor="recipe-name">Recipe Name</label>
-                        </div>
-
-                        <div className="mt-3">
-                            <textarea className="form-control"
-                                   id="recipe-notes"
-                                   rows={3}
-                                   placeholder="What specific information should others know about this recipe?"
-                                   value=""
-                            />
-                        </div>
-
-                        <div className="mt-3">
-                            <textarea className="form-control"
-                                   id="recipe-description"
-                                   placeholder="How would you describe this recipe for yourself and for others?"
-                                   rows={3}
-                                   value=""
-                            />
-                        </div>
-                    </div>
 
                     {/* This row houses the ingredients section */}
                     <div className="row mt-3">
@@ -89,10 +57,6 @@ const CreateAndEditRecipe = () => {
                         <div className="mt-3">
                             {/*todo: factor this ul out into a list-based component*/}
                             <ul className="list-group">
-                                <EditIngredient/>
-                                <EditIngredient/>
-                                <EditIngredient/>
-                                <EditIngredient/>
                             </ul>
                         </div>
                     </div>
@@ -102,12 +66,6 @@ const CreateAndEditRecipe = () => {
                         <div className="fs-2 border-0 border-top">Recipe Steps</div>
                         <div className="mt-3">
                             <ol className="list-group list-group-numbered">
-                                <EditableStep/>
-                                <EditableStep/>
-                                <EditableStep/>
-                                <EditableStep/>
-                                <EditableStep/>
-                                <EditingStep/>
                             </ol>
                             <div className="mt-2">
                                 <button className="btn btn-secondary w-100">Add Step</button>
@@ -117,6 +75,5 @@ const CreateAndEditRecipe = () => {
                 </div>
             </div>
         </>
-        );
-}
+)}
 export default CreateAndEditRecipe;

@@ -2,7 +2,8 @@ import HomeComponent from "./page-components/Homepage";
 import ProfileComponent from "./page-components/Profile";
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
-import RecipeDetails from "./domain-components/recipe-components/RecipeDetails";
+import CreateAndEditRecipe from "./domain-components/recipe-components/Recipe";
+import RecipeDetails from "./domain-components/recipe-components/Recipe/RecipeDetails";
 
 function  Coffee() {
     return(

@@ -2,8 +2,7 @@ import axios from 'axios';
 
 // RECIPE_API is a string referring to our middle tier
 const API_BASE = process.env.COFFEE_APP_API_BASE;
-const RECIPE_API = API_BASE + "/coffees";
-
+const RECIPE_API = "http://29b3-155-33-134-27.ngrok.io/api/coffees";
 
 // // the asynchronous functions take advantage of multi-threading capability
 // export const createRecipe = async (recipe) => {
@@ -22,7 +21,8 @@ export const findRecipes = async () => {
 //     const response = await axios.delete(`${RECIPE_API}/${rid}`)
 //     return response.data;
 // }
-//
+
+
 // export const updateRecipe = async (recipe) => {
 //     const response = await axios.put(`${RECIPE_API}/${recipe._id}`, recipe)
 //     return recipe;

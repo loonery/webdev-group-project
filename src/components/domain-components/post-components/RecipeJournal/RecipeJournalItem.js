@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
-import AbridgedDomainItem from "../AbridgedRecipe";
+import AbridgedDomainItem from "../AbridgedCollectionOrRecipe";
 import JournalStatsAndButtons from "./JournalStatsAndButtons";
 
 const RecipeJournalItem = () => {
