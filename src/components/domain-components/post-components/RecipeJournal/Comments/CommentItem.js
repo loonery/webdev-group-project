@@ -1,4 +1,4 @@
-const CommentItem = () => {
+const CommentItem = ({imageSource, userName, date, postText}) => {
     {/* single comment */}
     return(
         <li className="list-group-item border-0">

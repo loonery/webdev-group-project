@@ -33,7 +33,7 @@ const CreateEditRecipeJournal = () => {
                         <div className="flex-grow-1 fs-6 ms-3">
                             {/*user information in the card*/}
                             <div className="pt-2">{userName}</div>
-                            <div className="text-secondary">{userName} - <span>now</span></div>
+                            <div className="text-secondary">{userName} - <span>{date}</span></div>
                         </div>
 
                         <div className="px-2">
@@ -41,6 +41,7 @@ const CreateEditRecipeJournal = () => {
                                 <FontAwesomeIcon icon={faCancel}/>
                             </button>
                         </div>
+
                     </div>
 
                     {/*this div houses all post content */}
