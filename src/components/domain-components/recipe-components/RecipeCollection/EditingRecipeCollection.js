@@ -1,4 +1,4 @@
-import AbridgedDomainItem from "../AbridgedRecipe";
+import AbridgedDomainItem from "../../post-components/AbridgedRecipe";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSave, faX} from "@fortawesome/free-solid-svg-icons";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";

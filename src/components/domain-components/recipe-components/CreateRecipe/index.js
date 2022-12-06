@@ -1,6 +1,6 @@
-import EditableStep from "../Steps/EditableStep";
-import EditingStep from "../Steps/EditingStep";
-import EditIngredient from "../Ingredients/EditIngredient";
+import EditableStep from "../RecipeSteps/EditableStep";
+import EditingStep from "../RecipeSteps/EditingStep";
+import EditIngredient from "../RecipeIngredients/EditIngredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
 import {faCancel} from "@fortawesome/free-solid-svg-icons";
@@ -13,12 +13,12 @@ const CreateAndEditRecipe = () => {
             <div className="row border rounded mt-3 pt-3 ps-3 pb-3 pe-3">
 
                 <div className="d-flex pb-4">
-                    {/*back button*/}
+                    {/* back button */}
                     <div className="me-auto">
                         <button className="btn btn-outline-dark rounded-pill"><FontAwesomeIcon icon={faCancel}/></button>
                     </div>
 
-                    {/*edit button*/}
+                    {/* edit button */}
                     <div>
                         <button className="btn btn-outline-dark rounded-pill"><FontAwesomeIcon icon={faSave}/></button>
                     </div>
@@ -29,7 +29,7 @@ const CreateAndEditRecipe = () => {
 
                     {/*this row houses the recipe information section and its input fields*/}
                     <div className={"row"}>
-                        <div className="fs-2"> Recipe information</div>
+                        <div className="fs-2">Recipe information</div>
                         <div className="form-floating mt-3">
                             <input className="form-control"
                                    id="recipe-name"

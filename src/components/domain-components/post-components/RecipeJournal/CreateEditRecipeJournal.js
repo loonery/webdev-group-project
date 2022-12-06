@@ -2,6 +2,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
+import {faLink} from "@fortawesome/free-solid-svg-icons/faLink";
 
 const CreateEditRecipeJournal = () => {
 
@@ -66,14 +67,20 @@ const CreateEditRecipeJournal = () => {
 
                         {/*recipe information for recipe related to the post*/}
                         <button className="btn btn-outline-dark w-100 mb-3">
-                            <span className="fs-6">Link a recipe related to this experience</span>
-                        </button>
-
-                        <button className="btn btn-outline-dark w-100">
-                            <span className="fs-6">Post</span>
+                            <span className="fs-6">
+                                <FontAwesomeIcon icon={faLink}/>
+                                &ensp;Link a recipe related to this experience
+                            </span>
                         </button>
                     </div>
                 </div>
+
+                <div className="card-body border-top">
+                    <button className="btn btn-outline-dark rounded-pill w-100">
+                        <span className="fs-6">Post</span>
+                    </button>
+                </div>
+
             </div>
         </>
     );

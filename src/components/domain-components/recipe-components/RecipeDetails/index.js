@@ -1,5 +1,5 @@
-import StaticRecipeStep from "../Steps/StaticRecipeStep";
-import Ingredient from "../Ingredients/Ingredient";
+import StaticRecipeStep from "../RecipeSteps/StaticRecipeStep";
+import Ingredient from "../RecipeIngredients/Ingredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
