@@ -1,8 +1,6 @@
-
 // todo: refactor the recipe journal details to create this journal
-import AbridgedDomainItem from "../AbridgedRecipe";
-import JournalStatsAndButtons from "./JournalStatsAndButtons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 
 const CreateEditRecipeJournal = () => {
@@ -16,15 +14,11 @@ const CreateEditRecipeJournal = () => {
     return (
         <>
             <div className="card mb-4">
-                <div className="card-header">
-                    <div>
-                        <span className="fw-bold fs-5">Post Title</span>
-                    </div>
-                </div>
                 <div className="card-body">
 
                     {/*this div houses the user's image, data and post metadata that appear in the post*/}
                     <div className="d-flex">
+
                         {/*user image on the recipe journal*/}
                         <div className="mr-auto">
                             <img className="rounded-circle"
@@ -35,94 +29,53 @@ const CreateEditRecipeJournal = () => {
 
                         {/* Rest of the post content sits within a flex to the right of the profile
                          picture information*/}
-                        <div className="fs-6 ms-3">
+                        <div className="flex-grow-1 fs-6 ms-3">
                             {/*user information in the card*/}
                             <div className="pt-2">{userName}</div>
-                            <div className="text-secondary">{userName} - <span>{date}</span></div>
+                            <div className="text-secondary">{userName} - <span>now</span></div>
+                        </div>
+
+                        <div className="px-2">
+                            <button className="btn btn-outline-dark btn-sm">
+                                <FontAwesomeIcon icon={faCancel}/>
+                            </button>
                         </div>
                     </div>
 
                     {/*this div houses all post content */}
                     <div className={"px-4"}>
 
-                        {/*user post text*/}
-                        <div className="form-group my-3">
-                            <textarea className="form-control">
-
-                            </textarea>
-                        </div>
-
-                        {/*recipe information for recipe related to the post*/}
-                        <div className="border rounded"><AbridgedDomainItem/></div>
-
-                        {/*comment and like buttons, and stats */}
-                        <JournalStatsAndButtons/>
-
-                    </div>
-                </div>
-
-                {/*card footer houses the comments section*/}
-                {/* todo : factor this out into a 'comment' component */}
-                <div className="card-body border-bottom border-top">
-                    <div className="ps-2">Comments</div>
-
-                    {/* comments list component */}
-                    <div>
-                        <ul className={"pt-1 list-group"}>
-                            <li className="list-group-item border-0">
-                                <div className="d-flex">
-                                    <div className="mt-1">
-                                        <img className="rounded-circle"
-                                             height="40"
-                                             width={"40"}
-                                             src={imageSource}/>
-                                    </div>
-
-                                    <div className="flex-grow-1 ms-3 form-group">
-                                        {/*user information in the card*/}
-                                        <div>{userName} - <span className="fs-6 text-secondary">{date}</span></div>
-                                        {/*user post text*/}
-                                        <p>{postText}</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                {/* this card footer houses the comments*/}
-                {/*todo: replace with my factored out component*/}
-                <div className="card-footer">
-                    <div className="d-flex">
-                        <div className="mt-1">
-                            <img className="rounded-circle"
-                                 height="40"
-                                 width={"40"}
-                                 src={imageSource}/>
-                        </div>
-
-                        <div className="flex-grow-1 ms-3 form-group">
-                            <textarea className="form-control w-100"
-                                      placeholder="Say something nice, here!"
-                                      id="comments-box"
-                                      rows={3}
+                        {/* post title */}
+                        <div className="my-4">
+                            <input className="form-control"
+                                   placeholder="How would you like to title this post?"
+                                   id={"recipe-journal-title-input"}
                             />
                         </div>
 
-                        <div className="mt-2 pt-1 ms-3">
-                            <div>
-                                <button type="button" className="w-100 btn btn-outline-dark btn-sm">Post</button>
-                            </div>
-                            <div>
-                                <button type="button" className="w-100 mt-2 btn btn-outline-dark btn-sm">
-                                    <FontAwesomeIcon icon={faCancel}/>
-                                </button>
-                            </div>
+
+                        {/*user post text input*/}
+                        <div className="my-4">
+                            <textarea className="form-control"
+                                      placeholder="What do you want to say about this experience?"
+                                      rows={3}
+                                      style={{resize: "none"}}
+                                      id={"recipe-journal-description-input"}
+                            />
                         </div>
+
+                        {/*recipe information for recipe related to the post*/}
+                        <button className="btn btn-outline-dark w-100 mb-3">
+                            <span className="fs-6">Link a recipe related to this experience</span>
+                        </button>
+
+                        <button className="btn btn-outline-dark w-100">
+                            <span className="fs-6">Post</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 export default CreateEditRecipeJournal;
