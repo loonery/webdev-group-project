@@ -3,8 +3,18 @@ import Ingredient from "../Ingredients/Ingredient";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {findRecipesThunk} from "../../../../services/recipes-thunks";
 
 const RecipeDetails = () => {
+
+    const {recipes, loading} = useSelector(state => state.recipesData); // get tuits and loading flag from reducer
+    console.log(recipes);
+    const dispatch = useDispatch();
+
+    // invoke the findTuitsThunk to fetch tuits from the server and put them in the front-end store
+    useEffect(() => {dispatch(findRecipesThunk())}, [])
 
     const recipeName = "Ryan's Cortado";
     const userProfilePicture = "./local_images/dummy_webdev_2.jpg";

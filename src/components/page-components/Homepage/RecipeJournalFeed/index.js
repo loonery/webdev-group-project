@@ -1,9 +1,10 @@
 import react from 'react';
 import RecipeJournalItem from "../../../domain-components/recipe-components/RecipeJournal/RecipeJournalItem";
+import CreateEditRecipeJournal
+    from "../../../domain-components/recipe-components/RecipeJournal/CreateEditRecipeJournal";
 
 const RecipeJournalFeed = () => {
     return(
-
         // container row for the list group
         <div className="row border rounded-top ms-1 me-1">
 
@@ -16,7 +17,7 @@ const RecipeJournalFeed = () => {
 
             {/*this div holds the recipe journal list*/}
             <div className="pb-2">
-                <RecipeJournalItem/>
+                <CreateEditRecipeJournal/>
                 <RecipeJournalItem/>
                 <RecipeJournalItem/>
             </div>

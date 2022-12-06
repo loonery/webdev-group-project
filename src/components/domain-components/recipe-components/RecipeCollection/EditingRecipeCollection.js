@@ -32,7 +32,6 @@ const EditingRecipeCollection = () => {
                 {/*todo : the abridged recipes should be fed data*/}
                 {recipeArray.map((recipe, index) => {
                     return(
-
                         <li className="list-group-item">
                             <div className="d-flex align-items-center">
 

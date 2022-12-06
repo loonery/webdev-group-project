@@ -1,7 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import AbridgedDomainItem from "../AbridgedRecipe";
-import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
 import JournalStatsAndButtons from "./JournalStatsAndButtons";
 
 const RecipeJournalItem = () => {
