@@ -4,6 +4,7 @@ import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
 import CreateAndEditRecipe from "./domain-components/recipe-components/Recipe";
 import Recipe from "./domain-components/recipe-components/Recipe";
+import RecipeCollection from "./domain-components/recipe-components/RecipeCollection";
 
 function  Coffee() {
     return(
@@ -20,7 +21,7 @@ function  Coffee() {
                     <Route path="profile/*"
                            element={<ProfileComponent/>}/>
                     <Route path="search/*"
-                           element={<Recipe/>}/>
+                           element={<RecipeCollection/>}/>
                 </Routes>
             </div>
     );

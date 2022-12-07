@@ -44,7 +44,7 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
                         <div className="form-group mt-2">
                             <textarea className="form-control"
                                       rows={2}
-                                      onChange={(event) => {setDescription(event.target.value)}}
+                                      onChange={(event) => {setRecipeNotes(event.target.value)}}
                                       value={recipeNotes}
                             />
                         </div>

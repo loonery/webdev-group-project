@@ -1,5 +1,3 @@
-import react from 'react';
-import NavigationBar from "../../NavigationBar";
 import UserInfoSmall from "./UserInfoCard";
 import RecipeJournalFeed from "./RecipeJournalFeed";
 
@@ -17,5 +15,4 @@ const HomeComponent = () => {
         </div>
     );
 }
-
 export default HomeComponent;

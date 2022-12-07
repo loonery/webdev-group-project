@@ -1,9 +1,7 @@
 import react, {useState} from 'react';
-import RecipeJournalItem from "../../../domain-components/post-components/RecipeJournal/RecipeJournalItem";
-import CreateEditRecipeJournal
-    from "../../../domain-components/post-components/RecipeJournal/CreateEditRecipeJournal";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCancel} from "@fortawesome/free-solid-svg-icons";
+import CreateAndEditRecipeJournalForm
+    from "../../../domain-components/post-components/RecipeJournal/CreateAndEditRecipeJournalForm";
+import RecipeJournal from "../../../domain-components/post-components/RecipeJournal/RecipeJournal";
 
 const RecipeJournalFeed = () => {
 
@@ -28,13 +26,13 @@ const RecipeJournalFeed = () => {
             <div className="mt-3">
                 {/*new journal entry conditionally appears at the top of the post list*/}
                 {posting &&
-                    <CreateEditRecipeJournal setPosting={setPosting}/>
+                    <CreateAndEditRecipeJournalForm setPosting={setPosting}/>
                 }
 
                 {/*the rest of the posts appear below the post currently being created*/}
                 {
                     posts.map((post, index) => (
-                        <RecipeJournalItem/>
+                        <RecipeJournal/>
                     ))
                 }
             </div>

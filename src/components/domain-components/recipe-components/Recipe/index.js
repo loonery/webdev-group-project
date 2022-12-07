@@ -42,6 +42,7 @@ const Recipe = (props) => {
                 <Modal.Body className="modal-body">
                     <div className="row pt-3 ps-3 pb-3 pe-3">
                         <div className="d-flex justify-content-between">
+
                             {/*back button*/}
                             <div>
                                 {!editing &&

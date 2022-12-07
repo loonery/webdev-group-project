@@ -4,7 +4,7 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faLink} from "@fortawesome/free-solid-svg-icons/faLink";
 
-const CreateEditRecipeJournal = ({setPosting}) => {
+const CreateAndEditRecipeJournalForm = ({setPosting}) => {
 
     const imageSource = './local_images/dummy_webdev_2.jpg';
     const userName = "Coffee Beans";
@@ -43,7 +43,6 @@ const CreateEditRecipeJournal = ({setPosting}) => {
                                 <FontAwesomeIcon icon={faCancel}/>
                             </button>
                         </div>
-
                     </div>
 
                     {/*this div houses all post content */}
@@ -57,22 +56,19 @@ const CreateEditRecipeJournal = ({setPosting}) => {
                             />
                         </div>
 
-
                         {/*user post text input*/}
                         <div className="my-4">
                             <textarea className="form-control"
                                       placeholder="What do you want to say about this experience?"
                                       rows={3}
                                       style={{resize: "none"}}
-                                      id={"recipe-journal-description-input"}
-                            />
+                                      id={"recipe-journal-description-input"}/>
                         </div>
 
                         {/*recipe information for recipe related to the post*/}
                         <button className="btn btn-outline-dark w-100 mb-3">
                             <span className="fs-6">
-                                <FontAwesomeIcon icon={faLink}/>
-                                &ensp;Link a recipe related to this experience
+                                <FontAwesomeIcon icon={faLink}/>&ensp;Link a recipe related to this experience
                             </span>
                         </button>
                     </div>
@@ -87,4 +83,4 @@ const CreateEditRecipeJournal = ({setPosting}) => {
         </>
     );
 }
-export default CreateEditRecipeJournal;
+export default CreateAndEditRecipeJournalForm;

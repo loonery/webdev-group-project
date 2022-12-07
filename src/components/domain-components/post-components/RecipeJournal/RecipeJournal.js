@@ -5,7 +5,7 @@ import CommentsSection from "./Comments";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
 
-const RecipeJournalItem = () => {
+const RecipeJournal = () => {
     // todo: refactor as modal?
     // todo: delete static image source
     const imageSource = './local_images/dummy_webdev_2.jpg';
@@ -51,7 +51,9 @@ const RecipeJournalItem = () => {
                         <p className="mt-3">{postText}</p>
 
                         {/*recipe information for recipe related to the post*/}
-                        <div className="border rounded"><AbridgedDomainItem/></div>
+                        <div className="border rounded py-3 px-3">
+                            <AbridgedDomainItem/>
+                        </div>
 
                         {/*comment and like buttons, and stats */}
                         <div className={'pt-4 ps-2 pe-2'}>
@@ -68,8 +70,7 @@ const RecipeJournalItem = () => {
 
                                 {/*button - toggle the comments section*/}
                                 <button className="btn ms-2"
-                                        onClick={() => setCommenting(!commenting)}
-                                >
+                                        onClick={() => setCommenting(!commenting)}>
                                     <FontAwesomeIcon icon={regular('comment')}/>
                                 </button>
                             </div>
@@ -91,4 +92,4 @@ const RecipeJournalItem = () => {
         </>
     );
 }
-export default RecipeJournalItem
+export default RecipeJournal

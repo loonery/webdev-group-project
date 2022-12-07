@@ -1,12 +1,16 @@
+import RecipeCollection from "../../domain-components/recipe-components/RecipeCollection";
+
 const Profile = () => {
 
     const imageSource = './local_images/dummy_webdev.jpg';
     const userName = "James Hoffman";
     const userHandle = "@jamesHoffman"
 
+
+
     return (
         <>
-            <div className="row my-3 mx-3 py-3">
+            <div className="row my-2 mx-2 py-1 px-1">
 
                 {/* profile banner image */}
                 <div className="d-flex rounded border py-3 ps-3">
@@ -19,20 +23,25 @@ const Profile = () => {
                 </div>
             </div>
 
-
-            <div className="row border my-3 mx-3 py-3">
-                <div>
+            {/* profile information */}
+            <div className="row my-2 mx-2 py-1 px-1">
+                <div className="border rounded">
                     General Profile Information
                 </div>
             </div>
 
-            <div className="row border my-3 mx-3 py-3">
+            {/*container for user's recipes and recipe collections*/}
+            <div className="my-2 mx-2 py-1 px-1">
 
-                <div className="col border rounded my-3 mx-3 py-3 px-3">
-                    Recipes and Recipe Collections
+                <div className="d-flex">
+                    {/*todo: user's saved recipes should be listed here*/}
+                    <div className="pe-2"><RecipeCollection/></div>
+
+                    {/*todo: user's saved collections should be listed here*/}
+                    <div className="ps-2"><RecipeCollection/></div>
                 </div>
 
-                <div className="col border rounded my-3 mx-3 py-3 px-3">
+                <div className="border rounded">
                     Your Brewing Network
                 </div>
             </div>
