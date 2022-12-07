@@ -1,12 +1,10 @@
 import Ingredient from "./index";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import Step from "../RecipeStep";
 
 const IngredientsList = ({editingRecipe}) => {
 
     const ingredients = [{}, {}, {}, {}];
-
     return (
         <div className="row mt-3">
 
@@ -30,7 +28,9 @@ const IngredientsList = ({editingRecipe}) => {
                     {/*append 'add ingredient' button to the end of the list when the recipe is being edited*/}
                     {editingRecipe &&
                         <div className='mt-2'>
-                            <button className="btn btn-outline-dark w-100"><FontAwesomeIcon icon={faPlus}/></button>
+                            <button className="btn btn-outline-dark w-100">
+                                <FontAwesomeIcon icon={faPlus}/>
+                            </button>
                         </div>
                     }
                 </ul>

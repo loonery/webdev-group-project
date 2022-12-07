@@ -16,28 +16,22 @@ const RecipeJournalFeed = () => {
 
             {/*Posting button*/}
             {!posting &&
-                <div className="mb-3">
+                <div>
                     <button className="btn btn-primary w-100 mt-3 me-2 btn-secondary"
-                            onClick={() => setPosting(!posting)}>
+                            onClick={() => setPosting(true)}>
                         Make a Recipe Journal
-                    </button>
-                </div>
-            }
-            {/*Cancel posting button*/}
-            {posting &&
-                <div className="mb-3">
-                    <button className="btn btn-primary w-100 mt-3 me-2 btn-secondary"
-                            onClick={() => setPosting(!posting)}>
-                        <FontAwesomeIcon icon={faCancel}/> Cancel Journal Post
                     </button>
                 </div>
             }
 
             {/*this div holds the recipe journal list*/}
-            <div>
+            <div className="mt-3">
+                {/*new journal entry conditionally appears at the top of the post list*/}
                 {posting &&
-                    <CreateEditRecipeJournal/>
+                    <CreateEditRecipeJournal setPosting={setPosting}/>
                 }
+
+                {/*the rest of the posts appear below the post currently being created*/}
                 {
                     posts.map((post, index) => (
                         <RecipeJournalItem/>

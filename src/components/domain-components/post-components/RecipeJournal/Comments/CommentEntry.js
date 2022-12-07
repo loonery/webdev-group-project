@@ -1,5 +1,3 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 
 const CommentEntry = ({imageSource}) => {
 

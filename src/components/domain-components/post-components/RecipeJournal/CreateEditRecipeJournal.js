@@ -4,13 +4,14 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faLink} from "@fortawesome/free-solid-svg-icons/faLink";
 
-const CreateEditRecipeJournal = () => {
+const CreateEditRecipeJournal = ({setPosting}) => {
 
     const imageSource = './local_images/dummy_webdev_2.jpg';
     const userName = "Coffee Beans";
     const date = new Date().toDateString();
     const postText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut" +
-        " labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
+        " labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut " +
+        "aliquip consequat."
 
     return (
         <>
@@ -34,6 +35,13 @@ const CreateEditRecipeJournal = () => {
                             {/*user information in the card*/}
                             <div className="pt-2">{userName}</div>
                             <div className="text-secondary">{userName} - <span>{date}</span></div>
+                        </div>
+
+                        <div>
+                            <button className="btn btn-sm btn-outline-dark"
+                                    onClick={() => setPosting(false)}>
+                                <FontAwesomeIcon icon={faCancel}/>
+                            </button>
                         </div>
 
                     </div>
@@ -75,7 +83,6 @@ const CreateEditRecipeJournal = () => {
                         <span className="fs-6">Post</span>
                     </button>
                 </div>
-
             </div>
         </>
     );
