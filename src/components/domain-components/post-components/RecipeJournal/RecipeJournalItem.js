@@ -57,13 +57,16 @@ const RecipeJournalItem = () => {
                         <div className={'pt-4 ps-2 pe-2'}>
                             {/*todo: format this text to be significantly smaller*/}
                             {/*todo: Make the likes section a link to the list of people who liked this post*/}
-                            <span>0 likes | 10 comments</span>
+                            <span>0 likes |</span>
+                            <span>10 comments</span>
 
                             {/* comment and like buttons */}
                             <div className="float-end">
                                 <button className="btn">
                                     <FontAwesomeIcon icon={regular('thumbs-up')}/>
                                 </button>
+
+                                {/*button - toggle the comments section*/}
                                 <button className="btn ms-2"
                                         onClick={() => setCommenting(!commenting)}
                                 >

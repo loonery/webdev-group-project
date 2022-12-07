@@ -21,14 +21,9 @@ const CommentEntry = ({imageSource}) => {
                             />
                 </div>
 
-                <div className="mt-2 pt-1 ms-3">
+                <div className="d-flex align-items-center ms-3">
                     <div>
                         <button type="button" className="w-100 btn btn-outline-dark btn-sm">Post</button>
-                    </div>
-                    <div>
-                        <button type="button" className="w-100 mt-2 btn btn-outline-dark btn-sm">
-                            <FontAwesomeIcon icon={faCancel}/>
-                        </button>
                     </div>
                 </div>
             </div>

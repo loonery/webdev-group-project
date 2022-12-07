@@ -36,12 +36,6 @@ const CreateEditRecipeJournal = () => {
                             <div className="text-secondary">{userName} - <span>{date}</span></div>
                         </div>
 
-                        <div className="px-2">
-                            <button className="btn btn-outline-dark btn-sm">
-                                <FontAwesomeIcon icon={faCancel}/>
-                            </button>
-                        </div>
-
                     </div>
 
                     {/*this div houses all post content */}
