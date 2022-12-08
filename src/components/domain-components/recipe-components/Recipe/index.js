@@ -16,7 +16,7 @@ import RecipeHeader from "./RecipeHeader";
 // react component imports
 import {Modal} from "react-bootstrap";
 
-const Recipe = (props) => {
+const Recipe = ({show, showFunction}) => {
 
     // invoke the findTuitsThunk to fetch tuits from the server and put them in the front-end store
     const recipeName = "Ryan's Cortado";
@@ -32,13 +32,7 @@ const Recipe = (props) => {
     // todo: style the text area to not allow resizing
     return(
         <>
-
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered>
-
+            <Modal show={show} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Body className="modal-body">
                     <div className="row pt-3 ps-3 pb-3 pe-3">
                         <div className="d-flex justify-content-between">
@@ -47,7 +41,7 @@ const Recipe = (props) => {
                             <div>
                                 {!editing &&
                                     <button className="btn btn-outline-dark rounded-pill"
-                                            onClick={props.showFunction}>
+                                            onClick={showFunction}>
                                         <FontAwesomeIcon icon={faArrowLeft}/>
                                     </button>
                                 }
@@ -91,8 +85,7 @@ const Recipe = (props) => {
                             <RecipeHeader recipeName={recipeName}
                                           recipeNotes={recipeNotes}
                                           recipeAuthor={recipeAuthor}
-                                          editing={editing}
-                            />
+                                          editing={editing}/>
 
                             {/*list of ingredients*/}
                             <IngredientsList editingRecipe={editing}/>

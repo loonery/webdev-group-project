@@ -16,7 +16,7 @@ const AbridgedDomainItem = (domainObject) => {
         <>
             {/*pass the recipe modal component information about whether it's showing itself, and how to close itself*/}
             <Recipe show={showingDomainItem} showFunction={() => setShowingDomainItem(false)}/>
-
+a
             <div className="p-1">
                 <div className="d-flex">
 

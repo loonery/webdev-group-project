@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import NavigationTab from "./NavigationTab";
+import SearchBar from "../SearchBar";
 
 const NavigationBar = () => {
 
@@ -20,6 +21,9 @@ const NavigationBar = () => {
                         <NavigationTab key={index} activePath={tab.activePath} tabName={tab.tabName}></NavigationTab>
                     ))}
                 </ul>
+                <div className="pt-3">
+                    <SearchBar/>
+                </div>
             </div>
     );
 }

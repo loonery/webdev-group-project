@@ -3,8 +3,13 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faLink} from "@fortawesome/free-solid-svg-icons/faLink";
+import {useState} from "react";
+import LinkARecipeModal from "./LinkARecipeModal";
 
 const CreateAndEditRecipeJournalForm = ({setPosting}) => {
+
+    // establishes the state regarding whether a user is currently linking a recipe to this recipe journal
+    const [recipeLinking, setRecipeLinking] = useState(false);
 
     const imageSource = './local_images/dummy_webdev_2.jpg';
     const userName = "Coffee Beans";
@@ -15,6 +20,9 @@ const CreateAndEditRecipeJournalForm = ({setPosting}) => {
 
     return (
         <>
+            {/*dynamically rendering modal to link recipes*/}
+            <LinkARecipeModal show={recipeLinking} showFunction={() => setRecipeLinking(false)}/>
+
             <div className="card mb-4">
                 <div className="card-body">
 
@@ -32,11 +40,13 @@ const CreateAndEditRecipeJournalForm = ({setPosting}) => {
                         {/* Rest of the post content sits within a flex to the right of the profile
                          picture information*/}
                         <div className="flex-grow-1 fs-6 ms-3">
+
                             {/*user information in the card*/}
                             <div className="pt-2">{userName}</div>
                             <div className="text-secondary">{userName} - <span>{date}</span></div>
                         </div>
 
+                        {/*this div houses the button that cancels posting*/}
                         <div>
                             <button className="btn btn-sm btn-outline-dark"
                                     onClick={() => setPosting(false)}>
@@ -66,7 +76,8 @@ const CreateAndEditRecipeJournalForm = ({setPosting}) => {
                         </div>
 
                         {/*recipe information for recipe related to the post*/}
-                        <button className="btn btn-outline-dark w-100 mb-3">
+                        <button className="btn btn-outline-dark w-100 mb-3"
+                                onClick={() => setRecipeLinking(true)}>
                             <span className="fs-6">
                                 <FontAwesomeIcon icon={faLink}/>&ensp;Link a recipe related to this experience
                             </span>

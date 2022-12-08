@@ -1,5 +1,5 @@
 import UserInfoSmall from "./UserInfoCard";
-import RecipeJournalFeed from "./RecipeJournalFeed";
+import RecipeJournalFeed from "../../domain-components/post-components/RecipeJournal/RecipeJournalFeed";
 
 const HomeComponent = () => {
     // todo: add routing here to enforce different versions of the homepages
