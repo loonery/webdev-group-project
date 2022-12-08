@@ -23,9 +23,9 @@ const SearchBar = ({placeHolderText}) => {
                        onKeyDown={handleKeyDown}
                        placeholder={placeHolderText}/>
             </label>
-            <span className="searchBarMagnifyingGlass">
-                <FontAwesomeIcon icon={faMagnifyingGlass}/>
-            </span>
+            <div className="searchBarMagnifyingGlass">
+                <FontAwesomeIcon icon={faMagnifyingGlass} aria-hidden={true}/>
+            </div>
         </div>
     )
 }

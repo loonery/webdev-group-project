@@ -3,7 +3,7 @@ import AbridgedCollectionOrRecipe from "../../post-components/AbridgedCollection
 
 const RecipeCollection = () => {
 
-    const recipes = [{}, {}, {}, {}, {}, {}];
+    const recipesInCollection = [{}, {}, {}, {}, {}, {}];
 
     return (
         <div className="card">
@@ -28,7 +28,7 @@ const RecipeCollection = () => {
             <div className="card-body">
                 <ul className="list-group list-group-flush">
                     {
-                        recipes.map((recipe, index) => (
+                        recipesInCollection.map((recipe, index) => (
                             <li className="list-group-item">
                                 {/*// todo: make sure these are rendered as recipes*/}
                                 <AbridgedCollectionOrRecipe/>

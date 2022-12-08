@@ -22,7 +22,7 @@ const NavigationBar = () => {
                     ))}
                 </ul>
                 <div className="pt-3">
-                    <SearchBar/>
+                    <SearchBar placeHolderText={"Search for users, recipes, or recipe collections"}/>
                 </div>
             </div>
     );
