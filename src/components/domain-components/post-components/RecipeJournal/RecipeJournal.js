@@ -19,14 +19,20 @@ const RecipeJournal = () => {
     // todo: add dynamic rendering of comments box
     return(
         <>
+
             <div className="card mb-4">
+
+                {/*recipe journal's title*/}
                 <div className="card-header">
                     <span className="fw-bold fs-5">Post Title</span>
                 </div>
 
+                {/* this card body houses the entire post content */}
                 <div className="card-body">
+
                     {/*this div houses the user's image, data and post metadata that appear in the post*/}
                     <div className="d-flex">
+
                         {/*user image on the recipe journal*/}
                         <div className="mr-auto">
                             <img className="rounded-circle"
