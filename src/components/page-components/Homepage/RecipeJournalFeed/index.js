@@ -1,7 +1,7 @@
 import react, {useState} from 'react';
 import CreateAndEditRecipeJournalForm
     from "../../../domain-components/post-components/RecipeJournal/CreateAndEditRecipeJournalForm";
-import RecipeJournal from "../../../domain-components/post-components/RecipeJournal/RecipeJournal";
+import RecipeJournal from "../../../domain-components/post-components/RecipeJournal";
 
 const RecipeJournalFeed = () => {
 
