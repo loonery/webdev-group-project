@@ -1,6 +1,7 @@
 import HomeComponent from "./page-components/Homepage";
 import ProfileComponent from "./page-components/Profile";
 import LoginComponent from "./page-components/Login"
+import RegisterComponent from "./page-components/Register"
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
 import CreateAndEditRecipe from "./domain-components/recipe-components/Recipe";
@@ -23,6 +24,8 @@ function  Coffee() {
                            element={<ProfileComponent/>}/>
                     <Route path="login"
                            element={<LoginComponent/>}/>
+                    <Route path="register"
+                           element={<RegisterComponent/>}/>
                     <Route path="search/*"
                            element={<RecipeCollection/>}/>
                 </Routes>

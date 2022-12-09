@@ -1,10 +1,19 @@
 import React, {useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
+import {findUserThunk} from "../../../services/user-thunks";
 
 const LoginComponent = () => {
-    let [login, setLogin] = useState('');
+    let [username, setUsername] = useState('');
+    let [password, setPassword] = useState('');
+
     const dispatch = useDispatch();
-    const loginClickHandler = () => {}
+    const loginClickHandler = () => {
+        const user = {
+            username: username,
+            password: password
+        }
+        dispatch(findUserThunk(user));
+    }
 
     return (
         <div className="container">
@@ -17,6 +26,8 @@ const LoginComponent = () => {
                             <input type="text"
                                    className="form-control username"
                                    id="username"
+                                   value={username}
+                                   onChange={(event) => setUsername(event.target.value)}
                                    placeholder="Username"
                                    name="username"/>
                         </div>
@@ -24,11 +35,17 @@ const LoginComponent = () => {
                             <input type="password"
                                    className="form-control password"
                                    id="password"
+                                   value={password}
+                                   onChange={(event) => setPassword(event.target.value)}
                                    placeholder="Password"
                                    name="password"/>
                         </div>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-primary mt-4">Login</button>
+                            <button type="button"
+                                    className="btn btn-primary mt-4"
+                                    onClick={loginClickHandler}>
+                                Login
+                            </button>
                         </div>
                     </form>
                 </div>
