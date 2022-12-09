@@ -3,9 +3,8 @@ import ProfileComponent from "./page-components/Profile";
 import LoginComponent from "./page-components/Login"
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
-import CreateAndEditRecipe from "./domain-components/recipe-components/Recipe";
-import Recipe from "./domain-components/recipe-components/Recipe";
-import RecipeCollection from "./domain-components/recipe-components/RecipeCollection";
+import DomainItemCollection from "./domain-components/recipe-components/RecipeCollection";
+import Creator from "./page-components/Creator";
 
 function  Coffee() {
     return(
@@ -24,7 +23,7 @@ function  Coffee() {
                     <Route path="login"
                            element={<LoginComponent/>}/>
                     <Route path="search/*"
-                           element={<RecipeCollection/>}/>
+                           element={<Creator/>}/>
                 </Routes>
             </div>
     );

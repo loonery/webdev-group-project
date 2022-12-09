@@ -1,4 +1,4 @@
-import RecipeCollection from "../../domain-components/recipe-components/RecipeCollection";
+import DomainItemCollection from "../../domain-components/recipe-components/RecipeCollection";
 
 const Profile = () => {
 
@@ -35,10 +35,10 @@ const Profile = () => {
 
                 <div className="d-flex">
                     {/*todo: user's saved recipes should be listed here*/}
-                    <div className="pe-2"><RecipeCollection/></div>
+                    <div className="pe-2"><DomainItemCollection/></div>
 
                     {/*todo: user's saved collections should be listed here*/}
-                    <div className="ps-2"><RecipeCollection/></div>
+                    <div className="ps-2"><DomainItemCollection/></div>
                 </div>
 
                 <div className="border rounded">

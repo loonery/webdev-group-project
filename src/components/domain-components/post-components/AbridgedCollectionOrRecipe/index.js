@@ -4,12 +4,11 @@ import {useState} from "react";
 import Recipe from "../../recipe-components/Recipe";
 
 // the abridged recipe is a recipe's or collection's representation that appears outside its details page
-const AbridgedDomainItem = (domainObject) => {
+const AbridgedDomainItem = ({editingParentComponent}) => {
 
     // todo: determine the how the domain object type determines the rendering of this component
         // chevron button needs to display a different kind of details page than a modal because nested modals
         // are not permitted
-
     const [showingDomainItem, setShowingDomainItem] = useState(false);
 
     return (
@@ -40,12 +39,30 @@ const AbridgedDomainItem = (domainObject) => {
                     </div>
 
                     {/* chevron button on any abridged recipe or collection */}
-                    <div className="align-self-center">
-                        <button className="btn btn-outline-dark"
-                            onClick={() => setShowingDomainItem(true)}>
-                            <FontAwesomeIcon icon={solid('chevron-right')} size={"lg"}/>
-                        </button>
-                    </div>
+                    {/*todo: parameterize chevron button function such that when the object being rendered is a collection*/
+                        /*that we go to a details page rather than a modal*/
+                    }
+
+                    {/*This section dynamically renders the button on the abridged items depending on whether the
+                     collection is being edited*/}
+                    {!editingParentComponent &&
+                        <div className="align-self-center">
+                            <button className="btn btn-outline-dark"
+                                onClick={() => setShowingDomainItem(true)}>
+                                <FontAwesomeIcon icon={solid('chevron-right')} size={"lg"}/>
+                            </button>
+                        </div>
+                    }
+                    {editingParentComponent &&
+                        <div className="align-self-center ms-2">
+                            <button className="btn btn-outline-dark btn-sm"
+                                    onClick={() => {
+                                        return
+                                    }}>
+                                <FontAwesomeIcon icon={solid('minus')} size={"lg"}/>
+                            </button>
+                        </div>
+                    }
                 </div>
             </div>
         </>
