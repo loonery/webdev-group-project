@@ -2,7 +2,8 @@ import {useState} from "react";
 
 const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
 
-    const [description, setDescription] = useState("Description");
+    const [description, setDescription] = useState("");
+    const [name, setName] = useState(recipeName);
     const [recipeNotes, setRecipeNotes] = useState("notes");
 
     return(
@@ -10,12 +11,32 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
         <div className={"row"}>
 
             {/*title text*/}
-            <div className="d-flex justify-content-center mb-1">
-                <div className="fs-2">{recipeName}</div>
-            </div>
-            <div className="d-flex justify-content-center mb-1">
-                <div className="fs-6">{recipeAuthor}</div>
-            </div>
+            {!editing &&
+                <>
+                <div className="d-flex justify-content-center mb-1">
+                    <div className="fs-2">{recipeName}</div>
+                </div>
+                <div className="d-flex justify-content-center mb-1">
+                    <div className="fs-6">{recipeAuthor}</div>
+                </div>
+                </>
+            }
+            {editing &&
+                <div className="d-flex justify-content-center my-3">
+                    <div className="form-floating w-50">
+                        <input className="form-control"
+                               id={"titleInput"}
+                               placeholder={"Recipe title"}
+                               defaultValue={recipeName}
+                               value={name}
+                               onChange={(event) => setName(event.target.value)}
+                        />
+                        <label htmlFor="titleInput">Recipe title</label>
+                    </div>
+                </div>
+            }
+
+
 
             {/*Description of recipe*/}
             <div className="mt-3">

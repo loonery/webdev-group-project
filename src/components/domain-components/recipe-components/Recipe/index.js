@@ -15,8 +15,11 @@ import RecipeHeader from "./RecipeHeader";
 
 // react component imports
 import {Modal} from "react-bootstrap";
+import {faGenderless} from "@fortawesome/free-solid-svg-icons/faGenderless";
+import {faSignsPost} from "@fortawesome/free-solid-svg-icons/faSignsPost";
+import {faIndustry} from "@fortawesome/free-solid-svg-icons/faIndustry";
 
-const Recipe = ({show, showFunction}) => {
+const Recipe = ({modal, show, showFunction}) => {
 
     // invoke the findTuitsThunk to fetch tuits from the server and put them in the front-end store
     const recipeName = "Ryan's Cortado";
@@ -32,6 +35,7 @@ const Recipe = ({show, showFunction}) => {
     // todo: style the text area to not allow resizing
     return(
         <>
+            {modal &&
             <Modal show={show} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Body className="modal-body">
                     <div className="row pt-3 ps-3 pb-3 pe-3">
@@ -96,6 +100,48 @@ const Recipe = ({show, showFunction}) => {
                     </div>
                 </Modal.Body>
             </Modal>
+            }
+            {/*Component rendered NOT as a modal (rendered when initially creating) ################################*/}
+            {!modal &&
+                <div className="row pt-3 ps-3 pb-3 pe-3">
+                    <div className="d-flex justify-content-between">
+
+                        <div>
+                            <button className="btn btn-outline-dark rounded-pill"
+                                    onClick={() => {return}}>
+                                <FontAwesomeIcon icon={faCancel}/> Cancel Editing
+                            </button>
+                        </div>
+
+                        <img src={userProfilePicture}
+                             className="rounded-circle"
+                             height="75px"
+                             width="75px"
+                        />
+
+                        <div>
+                            <button className="btn btn-outline-dark rounded-pill"
+                                    onClick={() => {setEditing(false)}}>
+                                <FontAwesomeIcon icon={faIndustry}/> Generate Recipe
+                            </button>
+                        </div>
+                    </div>
+
+                    {/*outer col houses the entire form*/}
+                    <div className={"col"}>
+                        <RecipeHeader recipeName={recipeName}
+                                      recipeNotes={recipeNotes}
+                                      recipeAuthor={recipeAuthor}
+                                      editing={true}/>
+
+                        {/*list of ingredients*/}
+                        <IngredientsList editingRecipe={true}/>
+
+                        {/*list of steps to complete the recipe*/}
+                        <RecipeStepList editingRecipe={true}/>
+                    </div>
+                </div>
+            }
         </>
     );
 }
