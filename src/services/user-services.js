@@ -6,24 +6,41 @@ const api = axios.create({
     withCredentials: true
 });
 
-export const signup = (user) =>
-    api.post(`${USER_API}/register`, user)
-        .then(response => response.data);
+// export const signup = (user) =>
+//     api.post(`${USER_API}/register`, user)
+//         .then(response => response.data);
 
-export const login = (user) =>
-    api.post(`${USER_API}/login`, user)
-        .then(response => response.data);
+export const signup = async (user) => {
+    const response = await api.post(`${USER_API}/register`, user);
+    return response.data;
 
-export const logout = (user) =>
-    api.post(`${USER_API}/logout`, user)
-        .then(response => response.data);
+}
 
-export const profile = () =>
-    api.post(`${USER_API}/profile`)
-        .then(response => response.data);
 
-export const createUser = async (user) => {
-    const response = await axios.post(USER_API, user)
+// export const login = (user) =>
+//     api.post(`${USER_API}/login`, user)
+//         .then(response => response.data);
+
+export const login = async (user) => {
+    const response = await api.post(`${USER_API}/login`, user)
+    return response.data
+}
+
+// export const logout = (user) =>
+//     api.post(`${USER_API}/logout`, user)
+//         .then(response => response.data);
+
+export const logout = async (user) => {
+    const response = await api.post(`${USER_API}/logout`, user);
+    return response.data;
+}
+
+// export const profile = () =>
+//     api.post(`${USER_API}/profile`)
+//         .then(response => response.data);
+
+export const profile = async () => {
+    const response = await api.post(`${USER_API}/profile`);
     return response.data;
 }
 

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {registerUserThunk} from "../../../services/user-thunks";
+import {signupThunk} from "../../../services/user-thunks";
 
 const RegisterComponent = () => {
 
@@ -15,7 +15,7 @@ const RegisterComponent = () => {
             password: password
         }
 
-        dispatch(registerUserThunk(newUser));
+        dispatch(signupThunk(newUser));
 
     }
 

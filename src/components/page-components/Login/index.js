@@ -1,19 +1,16 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import {findUserThunk, loginUserThunk} from "../../../services/user-thunks";
+import {useDispatch, useSelector} from "react-redux";
+import {loginThunk} from "../../../services/user-thunks";
 
 const LoginComponent = () => {
-    let [username, setUsername] = useState('');
-    let [password, setPassword] = useState('');
+
+    const currentUser = useSelector(state => state.user);
+    let [userName, setUsername] = useState('sample');
+    let [password, setPassword] = useState('pass');
 
     const dispatch = useDispatch();
     const loginClickHandler = () => {
-        const user = {
-            userName: username,
-            password: password
-        }
-
-        dispatch(loginUserThunk(user));
+        dispatch(loginThunk({userName, password}));
     }
 
     return (
@@ -27,7 +24,7 @@ const LoginComponent = () => {
                             <input type="text"
                                    className="form-control username"
                                    id="username"
-                                   value={username}
+                                   value={userName}
                                    onChange={(event) => setUsername(event.target.value)}
                                    placeholder="Username"
                                    name="username"/>
