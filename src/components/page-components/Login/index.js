@@ -13,8 +13,8 @@ const LoginComponent = () => {
             password: password
         }
 
-        const userInfo = dispatch(findUserThunk(user)).arg
-        dispatch(loginUserThunk(userInfo));
+        // const userInfo = dispatch(findUserThunk(user)).arg
+        dispatch(loginUserThunk(user));
     }
 
     return (

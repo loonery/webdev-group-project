@@ -19,6 +19,7 @@ export const registerUserThunk = createAsyncThunk(
 
 export const loginUserThunk = createAsyncThunk(
     'users/loginUser', async (user) => {
+        console.log(user)
         await service.login(user);
     }
 )
