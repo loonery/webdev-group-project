@@ -1,30 +1,28 @@
 import express from 'express';
+import session from 'express-session'
+import mongoose from "mongoose";
 import cors from 'cors';
-import UserController from "./controllers/users/users-controller.js";
+import UsersController from "./controllers/users/users-controller.js";
+import RecipesController from "./controllers/recipes/recipes-controller.js";
+
+mongoose.connect("mongodb://localhost:27017/social-coffee");
 
 const app = express()
-/*
-const session = require('express-session')
-app.set('trust proxy', 1);
+
 app.use(session({
-    secret: process.env.SECRET,
+    secret: 'production',
     resave: false,
     saveUninitialized: true,
     cookie: {secure : true}
 }))
 
-let sess = {
-    secret: SECRET,
-    cookie: { secure: false }
-};
-
-if (process.env.ENV === 'production') {
-    app.set('trust proxy', 1)
-    sess.cookie.secure = true;
-}
-*/
-
 app.use(express.json())
-app.use(cors())
-UserController(app)
-app.listen(4000);
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:3000'
+}))
+
+RecipesController(app);
+UsersController(app)
+
+app.listen(process.env.PORT || 4000);

@@ -1,18 +1,21 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {createUserThunk} from "../../../services/user-thunks";
+import {registerUserThunk} from "../../../services/user-thunks";
 
 const RegisterComponent = () => {
+
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
+
     const registerClickHandler = () => {
         const newUser = {
-            username: username,
+            userName: username,
             password: password
         }
-        dispatch(createUserThunk(newUser))
+
+        dispatch(registerUserThunk(newUser));
 
     }
 

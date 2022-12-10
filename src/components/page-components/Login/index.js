@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {findUserThunk} from "../../../services/user-thunks";
+import {findUserThunk, loginUserThunk} from "../../../services/user-thunks";
 
 const LoginComponent = () => {
     let [username, setUsername] = useState('');
@@ -9,10 +9,12 @@ const LoginComponent = () => {
     const dispatch = useDispatch();
     const loginClickHandler = () => {
         const user = {
-            username: username,
+            userName: username,
             password: password
         }
-        dispatch(findUserThunk(user));
+
+        const userInfo = dispatch(findUserThunk(user)).arg
+        dispatch(loginUserThunk(userInfo));
     }
 
     return (

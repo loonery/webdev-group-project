@@ -10,3 +10,27 @@ export const findUserThunk = createAsyncThunk(
         await service.findUser(user);
     }
 )
+
+export const registerUserThunk = createAsyncThunk(
+    'users/loginUser', async (user) => {
+        await service.signup(user);
+    }
+)
+
+export const loginUserThunk = createAsyncThunk(
+    'users/loginUser', async (user) => {
+        await service.login(user);
+    }
+)
+
+export const logoutUserThunk = createAsyncThunk(
+    'users/loginUser', async (user) => {
+        await service.logout(user);
+    }
+)
+
+export const profileUserThunk = createAsyncThunk(
+    'users/loginUser', async (user) => {
+        await service.profile(user);
+    }
+)
