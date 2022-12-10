@@ -1,20 +1,22 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {findUserThunk, loginUserThunk} from "../../../services/user-thunks";
+import {registerUserThunk} from "../../../services/user-thunks";
 
-const LoginComponent = () => {
+const RegisterComponent = () => {
+
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
-    const loginClickHandler = () => {
-        const user = {
+
+    const registerClickHandler = () => {
+        const newUser = {
             userName: username,
             password: password
         }
 
-        // const userInfo = dispatch(findUserThunk(user)).arg
-        dispatch(loginUserThunk(user));
+        dispatch(registerUserThunk(newUser));
+
     }
 
     return (
@@ -22,7 +24,7 @@ const LoginComponent = () => {
             <div className="row justify-content-center align-items-center">
                 <div className="col-10 col-md-8 col-lg-6">
                     <form>
-                        <h1 className="text-center">Login Page</h1>
+                        <h1 className="text-center">Registration Page</h1>
                         <br/>
                         <div className="form-group text-center">
                             <input type="text"
@@ -45,8 +47,8 @@ const LoginComponent = () => {
                         <div className="text-center">
                             <button type="button"
                                     className="btn btn-primary mt-4"
-                                    onClick={loginClickHandler}>
-                                Login
+                                    onClick={registerClickHandler}>
+                                Register
                             </button>
                         </div>
                     </form>
@@ -55,4 +57,4 @@ const LoginComponent = () => {
         </div>
     );
 }
-export default LoginComponent;
+export default RegisterComponent;
