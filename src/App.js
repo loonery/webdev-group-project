@@ -3,6 +3,7 @@ import Coffee from "./components";
 import {BrowserRouter} from 'react-router-dom';
 import {Routes, Route} from 'react-router';
 import recipesReducer from "./reducers/recipes-reducer";
+import userReducer from "./reducers/user-reducer";
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
 
@@ -12,6 +13,7 @@ import {Provider} from "react-redux";
 const store = configureStore({
     reducer: {
         recipesData: recipesReducer,
+        users: userReducer
     }
 });
 
