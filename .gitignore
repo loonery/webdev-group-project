@@ -29,5 +29,3 @@ yarn-error.log*
 #fontawesome plugi configs
 babel*
 
-#coffee-node-server
-/coffee-server-node-app
