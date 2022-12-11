@@ -8,8 +8,8 @@ const NavigationBar = () => {
       // tabName : the text that appears on each navigation tab
     const tabs = [
         {activePath: '/', tabName: 'Home'},
-        {activePath: '/Profile', tabName: 'Profile'},
-        {activePath: '/Search', tabName: 'Search'}
+        {activePath: '/profile', tabName: 'Profile'},
+        {activePath: '/search', tabName: 'Search'}
     ]
 
     return(
