@@ -4,9 +4,7 @@ import LoginComponent from "./page-components/Login"
 import RegisterComponent from "./page-components/Register"
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
-import DomainItemCollection from "./domain-components/recipe-components/RecipeCollection";
 import Creator from "./page-components/Creator";
-import CurrentUser from "./page-components/Profile/CurrentUser";
 
 function  Coffee() {
     return(

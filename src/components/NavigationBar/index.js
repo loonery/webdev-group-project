@@ -1,7 +1,5 @@
-import {Link} from "react-router-dom";
 import NavigationTab from "./NavigationTab";
 import SearchBar from "../SearchBar";
-import {useState} from "react";
 import {useSelector} from "react-redux";
 
 const NavigationBar = () => {

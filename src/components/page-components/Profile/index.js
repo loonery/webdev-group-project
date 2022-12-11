@@ -1,10 +1,7 @@
 import DomainItemCollection from "../../domain-components/recipe-components/RecipeCollection";
-import RecipeCollection from "../../domain-components/recipe-components/RecipeCollection";
 import {useDispatch, useSelector} from "react-redux";
 import React from "react";
 import {Route, Routes, useNavigate} from "react-router";
-import RegisterComponent from "../Register";
-import LoginComponent from "../Login";
 import {Link} from "react-router-dom";
 import {logoutUserThunk} from "../../../services/user-thunks";
 
