@@ -8,15 +8,14 @@ import {logoutUserThunk} from "../../../services/user-thunks";
 const Profile = () => {
 
     const imageSource = './local_images/dummy_webdev.jpg';
+
     const {currentUser, loading} = useSelector((state) => state.users);
 
-    console.log(loading)
+    console.log(currentUser)
 
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const userName = "James Hoffman";
-    const userHandle = "@jamesHoffman"
 
     const handleLogout = () => {
         dispatch(logoutUserThunk()).then(() => navigate('/login'))

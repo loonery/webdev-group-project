@@ -5,6 +5,10 @@ export const findRecipesThunk = createAsyncThunk(
     'recipes/findRecipes', async () => await service.findRecipes()
 )
 
+export const findUserAuthoredRecipesThunk = createAsyncThunk (
+    'recipes/findUserAuthoredRecipes', async () => await service
+)
+
 // export const deleteRecipeThunk = createAsyncThunk(
 //     'recipes/deleteRecipe', async (recipeID) => {
 //         await service.deleteRecipe(recipeID);
