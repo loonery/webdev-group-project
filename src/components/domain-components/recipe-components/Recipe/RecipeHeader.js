@@ -2,9 +2,11 @@ import {useState} from "react";
 
 const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
 
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState("description default");
     const [name, setName] = useState(recipeName);
-    const [recipeNotes, setRecipeNotes] = useState("notes");
+    const [notes, setRecipeNotes] = useState("notes default");
+
+    
 
     return(
         /*this row houses the recipe information section and its input fields*/
@@ -60,13 +62,13 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
             <div className="mt-3">
                 <div className="fs-4">Notes</div>
                 <div className="pb-3 pe-3 rounded">
-                    {!editing && recipeNotes}
+                    {!editing && notes}
                     {editing &&
                         <div className="form-group mt-2">
                             <textarea className="form-control"
                                       rows={2}
                                       onChange={(event) => {setRecipeNotes(event.target.value)}}
-                                      value={recipeNotes}
+                                      value={notes}
                             />
                         </div>
                     }

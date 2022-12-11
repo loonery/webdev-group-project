@@ -4,12 +4,19 @@ import {faX} from "@fortawesome/free-solid-svg-icons/faX";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
+import {useDispatch} from "react-redux";
 
 const Ingredient = ({editable}) => {
 
     const [editing, setEditing] = useState(false);
     const [ingredientTitle, setIngredientTitle] = useState("I am an ingredient");
     const [ingredientAmount, setIngredientAmount] = useState("ingredient amounts");
+
+    const ingredients = useSelector(state => state.createRecipe);
+
+    const dispatch = useDispatch();
+
+    dispatch()
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-start">
