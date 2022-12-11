@@ -18,5 +18,5 @@ export const logoutUserThunk = createAsyncThunk(
 )
 
 export const profileUserThunk = createAsyncThunk(
-    'users/profileUser', async (user) => await service.profile(user)
+    'users/profileUser', async () => await service.profile()
 )

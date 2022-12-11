@@ -3,6 +3,7 @@ import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons/faMagnifyingG
 
 // custom css
 import './index.css';
+import {useSelector} from "react-redux";
 
 const SearchBar = ({placeHolderText}) => {
 
@@ -15,18 +16,27 @@ const SearchBar = ({placeHolderText}) => {
         }
     }
 
+    const {currentUser, loading} = useSelector((state) => state.users)
+
     return (
-        <div className="input-group">
-            <label className="w-100">
-                <input type={"text"}
-                       className="form-control border rounded-pill ps-5"
-                       onKeyDown={handleKeyDown}
-                       placeholder={placeHolderText}/>
-            </label>
-            <div className="searchBarMagnifyingGlass">
-                <FontAwesomeIcon icon={faMagnifyingGlass} aria-hidden={true}/>
+        <>
+            {currentUser &&
+            <div className="input-group">
+                <label className="w-100">
+                    <input type={"text"}
+                           className="form-control border rounded-pill ps-5"
+                           onKeyDown={handleKeyDown}
+                           placeholder={placeHolderText}/>
+                </label>
+                <div className="searchBarMagnifyingGlass">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} aria-hidden={true}/>
+                </div>
             </div>
-        </div>
-    )
+            }
+            {!currentUser &&
+                <></>
+            }
+        </>
+    );
 }
 export default SearchBar;

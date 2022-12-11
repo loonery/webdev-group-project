@@ -1,17 +1,21 @@
 import {Link} from "react-router-dom";
 import NavigationTab from "./NavigationTab";
 import SearchBar from "../SearchBar";
+import {useState} from "react";
+import {useSelector} from "react-redux";
 
 const NavigationBar = () => {
 
     // since we only have a few pages, we can statically declare them here
       // activePath : the path that tab links users to
       // tabName : the text that appears on each navigation tab
-    const tabs = [
+
+    const {currentUser, loading} = useSelector((state) => state.users)
+
+     const tabs = [
         {activePath: '/', tabName: 'Home'},
         {activePath: '/profile', tabName: 'Profile'},
-        {activePath: '/search', tabName: 'Search'}
-    ]
+        {activePath: '/create', tabName: 'Create'}]
 
     return(
             <div className="border-bottom pb-3 pt-2 mb-4">

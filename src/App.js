@@ -6,6 +6,7 @@ import recipesReducer from "./reducers/recipes-reducer";
 import userReducer from "./reducers/user-reducer";
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
+import CurrentUser from "./components/page-components/Profile/CurrentUser";
 
 /**
  * The store for the application
@@ -21,13 +22,15 @@ const store = configureStore({
 const App = () => {
   return (
     <Provider store={store}>
-        <BrowserRouter>
-            <div className="container">
-              <Routes>
-                <Route path="/*" element={<Coffee/>}/>
-              </Routes>
-            </div>
-      </BrowserRouter>
+        <CurrentUser>
+            <BrowserRouter>
+                <div className="container">
+                  <Routes>
+                    <Route path="/*" element={<Coffee/>}/>
+                  </Routes>
+                </div>
+            </BrowserRouter>
+        </CurrentUser>
     </Provider>
   );
 }

@@ -6,6 +6,7 @@ import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
 import DomainItemCollection from "./domain-components/recipe-components/RecipeCollection";
 import Creator from "./page-components/Creator";
+import CurrentUser from "./page-components/Profile/CurrentUser";
 
 function  Coffee() {
     return(
@@ -25,7 +26,7 @@ function  Coffee() {
                            element={<LoginComponent/>}/>
                     <Route path="register"
                            element={<RegisterComponent/>}/>
-                    <Route path="search/*"
+                    <Route path="create/*"
                            element={<Creator/>}/>
                 </Routes>
             </div>

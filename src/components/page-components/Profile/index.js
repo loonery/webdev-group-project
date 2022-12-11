@@ -2,7 +2,7 @@ import DomainItemCollection from "../../domain-components/recipe-components/Reci
 import RecipeCollection from "../../domain-components/recipe-components/RecipeCollection";
 import {useDispatch, useSelector} from "react-redux";
 import React from "react";
-import {Route, Routes} from "react-router";
+import {Route, Routes, useNavigate} from "react-router";
 import RegisterComponent from "../Register";
 import LoginComponent from "../Login";
 import {Link} from "react-router-dom";
@@ -11,19 +11,26 @@ import {logoutUserThunk} from "../../../services/user-thunks";
 const Profile = () => {
 
     const imageSource = './local_images/dummy_webdev.jpg';
-    const currentUser = useSelector((state) => state.users);
+    const {currentUser, loading} = useSelector((state) => state.users);
+
+    console.log(loading)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const userName = "James Hoffman";
     const userHandle = "@jamesHoffman"
 
     const handleLogout = () => {
-        dispatch(logoutUserThunk())
+        dispatch(logoutUserThunk()).then(() => navigate('/login'))
     }
 
+    if (loading)
+        return (
+            <h1>Loading</h1>
+        )
 
-    if (currentUser.currentUser === null)
+    else if (!currentUser)
         return (
             <>
                 <div className="row justify-content-center align-content-center  text-center fs-1 fw-bold">
@@ -71,14 +78,14 @@ const Profile = () => {
                     <div className="fw-bold fs-3 border rounded">
                         General Profile Information
                         <div className={'col fw-light fs-4'}>
-                            Name: {currentUser.currentUser.userName}
+                            Name: {currentUser.userName}
                             <button type={"button"}
                                     className={"btn btn-primary float-end me-4 mb-4"}
                                     onClick={handleLogout}>
                                 Logout
                             </button>
                             <br/>
-                            Password: {currentUser.currentUser.password}
+                            Password: {currentUser.password}
 
                         </div>
                     </div>
