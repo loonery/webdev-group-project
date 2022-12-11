@@ -18,8 +18,13 @@ export const findRecipes = async () => {
 }
 
 export const findUserAuthoredRecipes = async (uid) => {
-    const response = await axios.get(`${RECIPE_API}/${uid}`)
-    return response.data
+    if (uid) {
+        const response = await axios.get(`${RECIPE_API}/author/${uid}`)
+        return response.data
+    }
+    else {
+        return []
+    }
 }
 
 export const deleteRecipe = async (rid) => {

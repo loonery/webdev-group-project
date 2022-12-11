@@ -1,26 +1,21 @@
 // todo: here the recipe collection should conditionally render based upon the state of the user's credentials
+import react from 'react'
 import AbridgedCollectionOrRecipe from "../../post-components/AbridgedCollectionOrRecipe";
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faSave} from "@fortawesome/free-solid-svg-icons";
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 
-const DomainItemCollection = () => {
+const DomainItemList = ({author, recipes}) => {
 
-    const collection = {
-        author: "Ryan Looney",
-        title: "Collection title",
-        description: "Here is where the collection description will go",
-        saves: 5
-    }
-
-    const recipesInCollection = [{}, {}, {}];
+    const collection = [
+        {description: "description"}
+    ]
 
     const [editingCollection, setEditingCollection] = useState(false);
-    const [collectionTitleInput, setCollectionTitleInput] = useState(collection.title);
+    const [collectionTitleInput, setCollectionTitleInput] = useState(author.userName + "'s Created Recipes");
     const [collectionDescriptionInput, setCollectionDescriptionInput] = useState(collection.description)
 
     return (
@@ -31,7 +26,7 @@ const DomainItemCollection = () => {
                 {!editingCollection &&
                     <>
                         <div className="d-flex justify-content-between pb-1">
-                            <div className="fs-1">Collection Title</div>
+                            <div className="fs-1">{author.userName}'s Recipes</div>
                             <div className="pt-2">
                                 <button className="btn btn-outline-dark rounded-pill"
                                         onClick={()=>setEditingCollection(true)}>
@@ -42,15 +37,14 @@ const DomainItemCollection = () => {
 
                         {/*author and collection metadata*/}
                         <div className="fs-6 text-secondary">
-                            <span>Collection Author</span>
+                            <span>{author.userName}</span>
                             <span className="fs-6">&ensp;&middot;&ensp;</span>
-                            <span>5 saves</span>
                         </div>
 
                         {/*collection description*/}
                         <div className="border-top mt-2 pt-2 ps-1">
                             <div className="fs-6 ps-1">
-                                {collection.description}
+                                {author.userName}
                             </div>
                         </div>
                     </>
@@ -115,10 +109,10 @@ const DomainItemCollection = () => {
                         </li>
                     }
                 {
-                    recipesInCollection.map((recipe, index) => (
+                    recipes.map((recipe, index) => (
                         <li className="list-group-item">
                             {/*// todo: make sure these are rendered as recipes*/}
-                            <AbridgedCollectionOrRecipe editingParentComponent={editingCollection}/>
+                            <AbridgedCollectionOrRecipe key={index} author={author} recipe={recipe} editingParentComponent={editingCollection}/>
                         </li>
                     ))
                 }
@@ -127,4 +121,4 @@ const DomainItemCollection = () => {
         </div>
     );
 }
-export default DomainItemCollection;
+export default DomainItemList;

@@ -1,21 +1,37 @@
-import DomainItemCollection from "../../domain-components/recipe-components/RecipeCollection";
+import DomainItemList from "../../domain-components/recipe-components/RecipeCollection";
 import {useDispatch, useSelector} from "react-redux";
-import React from "react";
+import React, {useEffect} from "react";
 import {useNavigate} from "react-router";
 import {Link} from "react-router-dom";
 import {logoutUserThunk} from "../../../services/user-thunks";
+import {findUserAuthoredRecipesThunk} from "../../../services/recipes-thunks";
+import {current} from "@reduxjs/toolkit";
 
 const Profile = () => {
 
     const imageSource = './local_images/dummy_webdev.jpg';
 
     const {currentUser, loading} = useSelector((state) => state.users);
-
-    console.log(currentUser)
+    const {recipes, loadingRecipes} = useSelector((state) => state.recipes);
 
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
+    console.log(currentUser);
+
+    // ensure that the user's _id is in the symbol table even if the user is null
+    let id = "";
+    if (currentUser !== null) {
+        id = currentUser._id
+    }
+
+    useEffect(() => {
+         dispatch(findUserAuthoredRecipesThunk("6392e4643d734c667c9c716b"))
+    }, [])
+
+    console.log(recipes);
+
+    // find the current user's recipes that they have authored if they exist
     const handleLogout = () => {
         dispatch(logoutUserThunk()).then(() => navigate('/login'))
     }
@@ -25,7 +41,7 @@ const Profile = () => {
             <h1>Loading</h1>
         )
 
-    else if (!currentUser)
+    else if (!currentUser && !loading)
         return (
             <>
                 <div className="row justify-content-center align-content-center  text-center fs-1 fw-bold">
@@ -84,7 +100,6 @@ const Profile = () => {
 
                         </div>
                     </div>
-
                 </div>
 
                 {/*container for user's recipes and recipe collections*/}
@@ -92,10 +107,12 @@ const Profile = () => {
 
                 <div className="d-flex">
                     {/*todo: user's saved recipes should be listed here*/}
-                    <div className="pe-2"><DomainItemCollection/></div>
+                    <div className="pe-2">
+                        <DomainItemList author={currentUser} recipes={recipes}/>
+                    </div>
 
                     {/*todo: user's saved collections should be listed here*/}
-                    <div className="ps-2"><DomainItemCollection/></div>
+                    <div className="ps-2"> </div>
                 </div>
 
                     <div className="border rounded">

@@ -13,7 +13,7 @@ import CurrentUser from "./components/page-components/Profile/CurrentUser";
  */
 const store = configureStore({
     reducer: {
-        recipesData: recipesReducer,
+        recipes: recipesReducer,
         users: userReducer
     }
 });

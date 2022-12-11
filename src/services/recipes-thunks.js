@@ -7,7 +7,7 @@ export const findRecipesThunk = createAsyncThunk(
 
 export const findUserAuthoredRecipesThunk = createAsyncThunk (
     'recipes/findUserAuthoredRecipes',
-    async (user) => await service.findUserAuthoredRecipes(user)
+    async (uid) => await service.findUserAuthoredRecipes(uid)
 )
 
 // export const deleteRecipeThunk = createAsyncThunk(
