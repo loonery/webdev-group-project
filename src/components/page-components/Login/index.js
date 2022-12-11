@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {findUserThunk, loginUserThunk} from "../../../services/user-thunks";
+import {Link} from "react-router-dom";
+
 
 const LoginComponent = () => {
     let [username, setUsername] = useState('');
@@ -83,6 +85,9 @@ const LoginComponent = () => {
                                     onClick={loginClickHandler}>
                                 Login
                             </button>
+                        </div>
+                        <div className={"justify-content-center align-content-center mt-4 text-center"}>
+                            Need an account? Click here to <Link to={'/register'}>register</Link>
                         </div>
                     </form>
                 </div>

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {registerUserThunk} from "../../../services/user-thunks";
+import {Link} from "react-router-dom";
 
 const RegisterComponent = () => {
 
@@ -80,6 +81,9 @@ const RegisterComponent = () => {
                                     onClick={registerClickHandler}>
                                 Register
                             </button>
+                        </div>
+                        <div className={"justify-content-center align-content-center mt-4 text-center"}>
+                            Already have an account? Click here to <Link to={'/login'}>login</Link>
                         </div>
                     </form>
                 </div>
