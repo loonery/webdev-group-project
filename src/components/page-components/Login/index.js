@@ -1,19 +1,38 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import {findUserThunk, loginUserThunk} from "../../../services/user-thunks";
+import {useDispatch, useSelector} from "react-redux";
+import {loginUserThunk} from "../../../services/user-thunks";
 
 const LoginComponent = () => {
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
+    let [clicked, setClicked] = useState(false);
+    let [message, setMessage] = useState('');
 
+    const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch();
+
     const loginClickHandler = () => {
         const user = {
             userName: username,
             password: password
         }
 
-        dispatch(loginUserThunk(user));
+        if (user.userName === "") {
+            setMessage("Please enter a valid name.")
+            return false
+        }
+        else if(user.password === "") {
+            setMessage("Please enter a valid password.")
+            return false
+        }
+        else {
+            try {
+                dispatch(loginUserThunk(user)).then(() => setClicked(true));
+            }
+            catch (e) {
+
+            }
+        }
     }
 
     return (
@@ -22,13 +41,25 @@ const LoginComponent = () => {
                 <div className="col-10 col-md-8 col-lg-6">
                     <form>
                         <h1 className="text-center">Login Page</h1>
+                        {(!username || !password) && message !== "" && <div className={'alert alert-danger'}>{message}</div>}
+
+                        {currentUser !== null && username && password &&
+                            <div className={'alert alert-success'}>Success</div>}
+
+                        {currentUser === null && username && password && clicked &&
+                            <div className={'alert alert-danger'}>
+                                Your username/password is incorrect. Please try again.
+                            </div>}
                         <br/>
                         <div className="form-group text-center">
                             <input type="text"
                                    className="form-control username"
                                    id="username"
                                    value={username}
-                                   onChange={(event) => setUsername(event.target.value)}
+                                   onChange={(event) => {
+                                       setMessage("")
+                                       setClicked(false)
+                                       setUsername(event.target.value)}}
                                    placeholder="Username"
                                    name="username"/>
                         </div>
@@ -37,7 +68,10 @@ const LoginComponent = () => {
                                    className="form-control password"
                                    id="password"
                                    value={password}
-                                   onChange={(event) => setPassword(event.target.value)}
+                                   onChange={(event) => {
+                                       setMessage("")
+                                       setClicked(false)
+                                       setPassword(event.target.value)}}
                                    placeholder="Password"
                                    name="password"/>
                         </div>

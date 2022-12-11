@@ -1,12 +1,15 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {registerUserThunk} from "../../../services/user-thunks";
 
 const RegisterComponent = () => {
 
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
+    let [clicked, setClicked] = useState(false);
+    let [message, setMessage] = useState('');
 
+    const currentUser = useSelector((state) => state.users)
     const dispatch = useDispatch();
 
     const registerClickHandler = () => {
@@ -15,7 +18,17 @@ const RegisterComponent = () => {
             password: password
         }
 
-        dispatch(registerUserThunk(newUser));
+        if (newUser.userName === "") {
+            setMessage("Please enter a valid username.")
+            return false
+        }
+        else if(newUser.password === "") {
+            setMessage("Please enter a valid password.")
+            return false
+        }
+        else {
+            dispatch(registerUserThunk(newUser)).then(() => setClicked(true));
+        }
 
     }
 
@@ -26,12 +39,25 @@ const RegisterComponent = () => {
                     <form>
                         <h1 className="text-center">Registration Page</h1>
                         <br/>
+                        {(!username || !password) && message !== "" && <div className={'alert alert-danger'}>{message}</div>}
+
+                        {currentUser.currentUser !== null && username && password && clicked &&
+                            <div className={'alert alert-success'}>Registration Successful. Welcome {currentUser.currentUser.userName}</div>}
+
+                        {currentUser.currentUser === null && username && password && clicked &&
+                            <div className={'alert alert-danger'}>
+                                This username already exists.
+                            </div>}
                         <div className="form-group text-center">
                             <input type="text"
                                    className="form-control username"
                                    id="username"
                                    value={username}
-                                   onChange={(event) => setUsername(event.target.value)}
+                                   onChange={(event) => {
+                                       setMessage("")
+                                       setClicked(false)
+                                       setUsername(event.target.value)
+                                   }}
                                    placeholder="Username"
                                    name="username"/>
                         </div>
@@ -40,7 +66,11 @@ const RegisterComponent = () => {
                                    className="form-control password"
                                    id="password"
                                    value={password}
-                                   onChange={(event) => setPassword(event.target.value)}
+                                   onChange={(event) => {
+                                       setMessage("")
+                                       setClicked(false)
+                                       setPassword(event.target.value)
+                                   }}
                                    placeholder="Password"
                                    name="password"/>
                         </div>
