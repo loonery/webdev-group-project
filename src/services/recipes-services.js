@@ -17,8 +17,9 @@ export const findRecipes = async () => {
     return recipes;                   // return the recipes array
 }
 
-export const findUserAuthoredRecipes = async () => {
-
+export const findUserAuthoredRecipes = async (uid) => {
+    const response = await axios.get(`${RECIPE_API}/${uid}`)
+    return response.data
 }
 
 export const deleteRecipe = async (rid) => {
