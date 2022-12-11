@@ -7,6 +7,11 @@ const RegisterComponent = () => {
 
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
+    let [verifyPassword, setVerifyPassword] = useState('');
+    let [firstName, setFirstName] = useState('');
+    let [lastName, setLastName] = useState('');
+    let [role, setRole] = useState('');
+
     let [clicked, setClicked] = useState(false);
     let [message, setMessage] = useState('');
 
@@ -16,15 +21,35 @@ const RegisterComponent = () => {
     const registerClickHandler = () => {
         const newUser = {
             userName: username,
-            password: password
+            password: password,
+            profilePicture: '',
+            firstName: firstName,
+            lastName: lastName,
+            role: role
         }
 
-        if (newUser.userName === "") {
+        if (firstName === "") {
+            setMessage("Please enter a first name.")
+            return false
+        }
+        else if (lastName === "") {
+            setMessage("Please enter a last name.")
+            return false
+        }
+        else if (newUser.userName === "") {
             setMessage("Please enter a valid username.")
             return false
         }
-        else if(newUser.password === "") {
+        else if (newUser.password === "") {
             setMessage("Please enter a valid password.")
+            return false
+        }
+        else if (newUser.password !== verifyPassword) {
+            setMessage("Passwords do not match.")
+            return false
+        }
+        else if (role === "") {
+            setMessage("Please select a role.")
             return false
         }
         else {
@@ -40,7 +65,8 @@ const RegisterComponent = () => {
                     <form>
                         <h1 className="text-center">Registration Page</h1>
                         <br/>
-                        {(!username || !password) && message !== "" && <div className={'alert alert-danger'}>{message}</div>}
+                        {(!username || !password || !firstName || !lastName || !verifyPassword || (password !== verifyPassword) || !role)
+                            && message !== "" && <div className={'alert alert-danger'}>{message}</div>}
 
                         {currentUser.currentUser !== null && username && password && clicked &&
                             <div className={'alert alert-success'}>Registration Successful. Welcome {currentUser.currentUser.userName}</div>}
@@ -50,6 +76,32 @@ const RegisterComponent = () => {
                                 This username already exists.
                             </div>}
                         <div className="form-group text-center">
+                            <input type="text"
+                                   className="form-control"
+                                   id="first-name"
+                                   value={firstName}
+                                   onChange={(event) => {
+                                       setMessage("")
+                                       setClicked(false)
+                                       setFirstName(event.target.value)
+                                   }}
+                                   placeholder="First name"
+                                   name="first-name"/>
+                        </div>
+                        <div className="form-group text-center mt-4">
+                            <input type="text"
+                                   className="form-control"
+                                   id="last-name"
+                                   value={lastName}
+                                   onChange={(event) => {
+                                       setMessage("")
+                                       setClicked(false)
+                                       setLastName(event.target.value)
+                                   }}
+                                   placeholder="Last name"
+                                   name="last-name"/>
+                        </div>
+                        <div className="form-group text-center mt-4">
                             <input type="text"
                                    className="form-control username"
                                    id="username"
@@ -74,6 +126,32 @@ const RegisterComponent = () => {
                                    }}
                                    placeholder="Password"
                                    name="password"/>
+                        </div>
+                        <div className="text-center form-group mt-4">
+                            <input type="password"
+                                   className="form-control password"
+                                   id="verify-password"
+                                   value={verifyPassword}
+                                   onChange={(event) => {
+                                       setMessage("")
+                                       setClicked(false)
+                                       setVerifyPassword(event.target.value)
+                                   }}
+                                   placeholder="Confirm password"
+                                   name="verify-password"/>
+                        </div>
+                        <div className="form-group text-center mt-4">
+                            <select className="form-select"
+                                    aria-label="Role"
+                                    onChange={(event) => {
+                                        setMessage("")
+                                        setClicked(false)
+                                        setRole(event.target.value)}}>
+                                <option selected>Role</option>
+                                <option value="BASIC">Basic</option>
+                                <option value="PREMIUM">Premium</option>
+                                <option value="ADMIN">Admin</option>
+                            </select>
                         </div>
                         <div className="text-center">
                             <button type="button"
