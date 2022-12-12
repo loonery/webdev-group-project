@@ -1,10 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {findRecipesThunk, findUserAuthoredRecipesThunk} from "../services/recipes-thunks";
-import {findUserAuthoredRecipes} from "../services/recipes-services";
 
 const initialState = {
     recipes: [],
-    loading: false
+    recipesLoading: false
 }
 
 const recipeSlice = createSlice(
@@ -21,7 +20,12 @@ const recipeSlice = createSlice(
                 (state, { payload }) => {
                     state.loading = false
                     state.recipes = payload
-                }
+                },
+            [findUserAuthoredRecipesThunk.rejected]:
+                (state, { payload }) => {
+                    state.loading = false
+                    state.recipes = []
+                },
         },
         reducers: {
 

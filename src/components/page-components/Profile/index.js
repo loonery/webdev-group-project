@@ -1,20 +1,31 @@
 import DomainItemCollection from "../../domain-components/recipe-components/RecipeCollection";
 import {useDispatch, useSelector} from "react-redux";
-import React from "react";
+import React, {useEffect} from "react";
 import {useNavigate} from "react-router";
 import {Link} from "react-router-dom";
 import {logoutUserThunk} from "../../../services/user-thunks";
+import {findUserAuthoredRecipesThunk} from "../../../services/recipes-thunks";
 
 const Profile = () => {
 
     const imageSource = './local_images/dummy_webdev.jpg';
 
     const {currentUser, loading} = useSelector((state) => state.users);
-
-    console.log(currentUser)
+    const {recipes, recipesLoading} = useSelector((state) => state.recipesData)
 
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    console.log(currentUser);
+    console.log(recipes);
+
+    let authorID = "";
+    if (currentUser) {
+        authorID = currentUser._id;
+    }
+    useEffect(() => {
+        dispatch(findUserAuthoredRecipesThunk(authorID))
+    }, [authorID, dispatch]);
 
     const handleLogout = () => {
         dispatch(logoutUserThunk()).then(() => navigate('/login'))
@@ -24,8 +35,7 @@ const Profile = () => {
         return (
             <h1>Loading</h1>
         )
-
-    else if (!currentUser)
+    else if (!currentUser && !loading)
         return (
             <>
                 <div className="row justify-content-center align-content-center  text-center fs-1 fw-bold">
@@ -48,11 +58,9 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-
             </>
         )
-
-    else
+    else if (currentUser && !loading)
         return (
             <>
                 <div className="row my-2 mx-2 py-1 px-1">
@@ -81,7 +89,6 @@ const Profile = () => {
                             </button>
                             <br/>
                             Password: {currentUser.password}
-
                         </div>
                     </div>
 
@@ -92,7 +99,8 @@ const Profile = () => {
 
                 <div className="d-flex">
                     {/*todo: user's saved recipes should be listed here*/}
-                    <div className="pe-2"><DomainItemCollection/></div>
+                    <div className="pe-2"><DomainItemCollection author={currentUser}/></div>
+
 
                     {/*todo: user's saved collections should be listed here*/}
                     <div className="ps-2"><DomainItemCollection/></div>
@@ -105,5 +113,4 @@ const Profile = () => {
             </>
     );
 }
-
 export default Profile;

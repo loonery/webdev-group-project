@@ -5,23 +5,17 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil} from "@fortawesome/free-solid-svg-icons/faPencil";
 import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faSave} from "@fortawesome/free-solid-svg-icons";
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
+import currentUser from "../../../page-components/Profile/CurrentUser";
 
-const DomainItemCollection = () => {
-
-    const collection = {
-        author: "Ryan Looney",
-        title: "Collection title",
-        description: "Here is where the collection description will go",
-        saves: 5
-    }
-
-    const recipesInCollection = [{}, {}, {}];
+const DomainItemCollection = ({author = {firstName: "",
+                                                                      lastName : ""},
+                                  recipesInCollection = []}
+) => {
 
     const [editingCollection, setEditingCollection] = useState(false);
-    const [collectionTitleInput, setCollectionTitleInput] = useState(collection.title);
-    const [collectionDescriptionInput, setCollectionDescriptionInput] = useState(collection.description)
+    const [collectionTitleInput, setCollectionTitleInput] = useState(author.firstName + "'s Created Recipes");
+    const [collectionDescriptionInput, setCollectionDescriptionInput] = useState("Coffee recipes made by " + author.firstName);
 
     return (
         <div className="card">
@@ -31,7 +25,7 @@ const DomainItemCollection = () => {
                 {!editingCollection &&
                     <>
                         <div className="d-flex justify-content-between pb-1">
-                            <div className="fs-1">Collection Title</div>
+                            <div className="fs-1">{collectionTitleInput}</div>
                             <div className="pt-2">
                                 <button className="btn btn-outline-dark rounded-pill"
                                         onClick={()=>setEditingCollection(true)}>
@@ -42,15 +36,13 @@ const DomainItemCollection = () => {
 
                         {/*author and collection metadata*/}
                         <div className="fs-6 text-secondary">
-                            <span>Collection Author</span>
+                            <span>{author.firstName + " " + author.lastName}</span>
                             <span className="fs-6">&ensp;&middot;&ensp;</span>
-                            <span>5 saves</span>
                         </div>
 
                         {/*collection description*/}
                         <div className="border-top mt-2 pt-2 ps-1">
                             <div className="fs-6 ps-1">
-                                {collection.description}
                             </div>
                         </div>
                     </>
@@ -78,9 +70,9 @@ const DomainItemCollection = () => {
                                 <input className="form-control"
                                        type="text"
                                        id="collectionTitleInput"
-                                       defaultValue="Collection Title"
+                                       defaultValue={collectionTitleInput}
                                        value={collectionTitleInput}
-                                       onChange={(event) => setCollectionDescriptionInput(event.target.value)}
+                                       onChange={(event) => setCollectionTitleInput(event.target.value)}
                                        placeholder="Enter the collection title here"
                                 />
                             </div>
@@ -92,7 +84,7 @@ const DomainItemCollection = () => {
                                 <input className="form-control"
                                        type="text"
                                        id="collectionTitleInput"
-                                       defaultValue={collection.description}
+                                       defaultValue={collectionDescriptionInput}
                                        value={collectionDescriptionInput}
                                        onChange={(event) => setCollectionDescriptionInput(event.target.value)}
                                        placeholder="Enter the collection's description here"
@@ -114,14 +106,28 @@ const DomainItemCollection = () => {
                             </button>
                         </li>
                     }
-                {
-                    recipesInCollection.map((recipe, index) => (
-                        <li className="list-group-item">
-                            {/*// todo: make sure these are rendered as recipes*/}
-                            <AbridgedCollectionOrRecipe editingParentComponent={editingCollection}/>
-                        </li>
-                    ))
-                }
+                    {recipesInCollection.length >= 0 &&
+                         <>
+                             {
+                                recipesInCollection.map((recipe, index) => (
+                                    <li className="list-group-item">
+                                        {/*// todo: make sure these are rendered as recipes*/}
+                                        <AbridgedCollectionOrRecipe recipe={recipe}
+                                                                    editingParentComponent={editingCollection}/>
+                                    </li>
+                                ))
+                             }
+                         </>
+                    }
+                    {recipesInCollection.length === 0 &&
+                     <>
+                         <li className="list-group-item">
+                             <span className="text-secondary">
+                                 It looks like you haven't made any recipes...
+                             </span>
+                         </li>
+                     </>
+                    }
                 </ul>
             </div>
         </div>

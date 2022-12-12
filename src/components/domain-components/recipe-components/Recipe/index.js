@@ -15,8 +15,6 @@ import RecipeHeader from "./RecipeHeader";
 
 // react component imports
 import {Modal} from "react-bootstrap";
-import {faGenderless} from "@fortawesome/free-solid-svg-icons/faGenderless";
-import {faSignsPost} from "@fortawesome/free-solid-svg-icons/faSignsPost";
 import {faIndustry} from "@fortawesome/free-solid-svg-icons/faIndustry";
 import {useDispatch, useSelector} from "react-redux";
 import {createRecipeThunk} from "../../../../services/recipes-thunks";
@@ -35,11 +33,10 @@ const Recipe = ({modal, show, showFunction}) => {
     const [editable, setEditable] = useState(true);
 
     //fetch description from the createRecipe reducer
-    const recipe = useSelector(state => state.createRecipe);
+    const recipe = useSelector((state) => state.createRecipe);
     const {currentUser, loading} = useSelector((state) => state.users);
 
     const dispatch = useDispatch();
-
 
     // todo: style the text area to not allow resizing
     return(
@@ -60,9 +57,7 @@ const Recipe = ({modal, show, showFunction}) => {
                                 }
                                 {editing &&
                                     <button className="btn btn-outline-dark rounded-pill"
-                                            onClick={() => {
-
-                                            }}>
+                                            onClick={() => {}}>
                                         <FontAwesomeIcon icon={faSave}/>
                                     </button>
                                 }
