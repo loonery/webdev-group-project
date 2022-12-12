@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ModalComponent from '../ModalComponent';
+import { Link, useParams } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
@@ -11,6 +13,8 @@ function Demo() {
     const [showModal, setShowModal] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const [search, setSearch] = useState('');
+    let { id } = useParams();
+
 
     useEffect(() => {
 
@@ -115,8 +119,19 @@ function Demo() {
                                 <li key={ingredient}>{ingredient}</li>
                             ))}
                     </ul>
+
+                    <Link to={`/demo/details/${selectedItem && selectedItem.id}`}
+                          as="a"
+                     >Click here to view product details
+                        {console.log(selectedItem && selectedItem.id)}
+                    </Link>
+
+                    <p>crfe</p>
                 </Modal.Body>
             </Modal>
+            {/*<ModalComponent param={selectedItem}/>*/}
+
+            {/*<ModalComponent show={showModal} showFunction={hideDetails} param={selectedItem}/>*/}
         </div>
     );
 }
