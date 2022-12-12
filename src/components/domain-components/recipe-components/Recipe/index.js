@@ -18,6 +18,8 @@ import {Modal} from "react-bootstrap";
 import {faGenderless} from "@fortawesome/free-solid-svg-icons/faGenderless";
 import {faSignsPost} from "@fortawesome/free-solid-svg-icons/faSignsPost";
 import {faIndustry} from "@fortawesome/free-solid-svg-icons/faIndustry";
+import {useDispatch, useSelector} from "react-redux";
+import {createRecipeThunk} from "../../../../services/recipes-thunks";
 
 const Recipe = ({modal, show, showFunction}) => {
 
@@ -31,6 +33,13 @@ const Recipe = ({modal, show, showFunction}) => {
 
     const [editing, setEditing] = useState(false);
     const [editable, setEditable] = useState(true);
+
+    //fetch description from the createRecipe reducer
+    const recipe = useSelector(state => state.createRecipe);
+    const currentUser = useSelector((state) => state.users)
+
+    const dispatch = useDispatch();
+
 
     // todo: style the text area to not allow resizing
     return(
@@ -52,7 +61,7 @@ const Recipe = ({modal, show, showFunction}) => {
                                 {editing &&
                                     <button className="btn btn-outline-dark rounded-pill"
                                             onClick={() => {
-                                                return
+
                                             }}>
                                         <FontAwesomeIcon icon={faSave}/>
                                     </button>
@@ -121,7 +130,22 @@ const Recipe = ({modal, show, showFunction}) => {
 
                         <div>
                             <button className="btn btn-outline-dark rounded-pill"
-                                    onClick={() => {setEditing(false)}}>
+                                    onClick={() => {
+                                        setEditing(false);
+                                        console.log("recipe/index.js");
+                                        // console.log(recipe.name, recipe.description, recipe.notes);
+                                        console.log('recipe = ', recipe);
+                                        const r = {
+                                            recipeName: recipe.name,
+                                            recipeDescription: recipe.description,
+                                            recipeNote: recipe.notes,
+                                            ingredients: recipe.ingredients,
+                                            steps: recipe.steps
+                                        }
+
+                                        dispatch(createRecipeThunk(r)) ;
+
+                                    }}>
                                 <FontAwesomeIcon icon={faIndustry}/> Generate Recipe
                             </button>
                         </div>

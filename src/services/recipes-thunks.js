@@ -1,9 +1,22 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import * as service from "./recipes-services"
+import {createRecipe, updateRecipieHeader, updateRecipieIngredients, updateRecipieSteps} from "./recipes-services";
 
 export const findRecipesThunk = createAsyncThunk(
     'recipes/findRecipes', async () => await service.findRecipes()
 )
+
+export const createRecipeThunk = createAsyncThunk(
+    'createRecipe',
+    async (recipe) => await createRecipe(recipe)
+)
+
+export const updateRecipieHeaderThunk = createAsyncThunk('updateName', async(header) => await updateRecipieHeader(header))
+
+export const updateRecipieIngredientsThunk = createAsyncThunk('updateIngredients', async(ingredients) => await updateRecipieIngredients(ingredients))
+
+export const updateRecipieStepsThunk = createAsyncThunk('updateSteps', async(steps) => await updateRecipieSteps(steps))
+
 
 export const findUserAuthoredRecipesThunk = createAsyncThunk (
     'recipes/findUserAuthoredRecipes',
