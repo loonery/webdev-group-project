@@ -4,15 +4,16 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import NavigationTab from "../../../NavigationBar/NavigationTab";
 import {updateRecipieIngredientsThunk, updateRecipieStepsThunk} from "../../../../services/recipes-thunks";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-const RecipeStepList = ({editingRecipe}) => {
+const RecipeStepList = () => {
 
     // todo: get data from the api
     // const steps = [{}, {}, {}, {}, {}, {}];
 
-    const [adding, setAdding] = useState(false);
-    const [steps, setSteps] = useState('');
+    const recipe = useSelector((state) => state.createRecipe)
+
+    const [steps, setSteps] = useState(recipe.steps);
 
     const dispatch = useDispatch();
 
@@ -28,6 +29,7 @@ const RecipeStepList = ({editingRecipe}) => {
             <div className="text-secondary fs-6">
                 Enter your steps below
                 <textarea className="form-control" rows="4" placeholder={"Enter steps here"}
+                          defaultValue={recipe.steps}
                           onChange={(event) => {
                               setSteps(event.target.value)
                               syncInfo()

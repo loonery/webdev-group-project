@@ -35,6 +35,14 @@ export const createRecipe = async (recipe) => {
     //     .then(response => response.data);
 }
 
+export const updateCreating = async () => {
+    return true;
+}
+
+export const updateExitCreating = async () => {
+    return true;
+}
+
 export const updateRecipieHeader = async (header) => {
     return header;
 }
