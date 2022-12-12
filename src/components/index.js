@@ -5,6 +5,7 @@ import RegisterComponent from "./page-components/Register"
 import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
 import Creator from "./page-components/Creator";
+import Demo from "./page-components/Demo";
 
 function  Coffee() {
     return(
@@ -26,6 +27,8 @@ function  Coffee() {
                            element={<RegisterComponent/>}/>
                     <Route path="create/*"
                            element={<Creator/>}/>
+                    <Route path="demo/*"
+                           element={<Demo/>}/>
                 </Routes>
             </div>
     );
