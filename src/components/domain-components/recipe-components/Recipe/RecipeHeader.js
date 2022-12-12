@@ -1,4 +1,6 @@
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {updateRecipieHeaderThunk} from "../../../../services/recipes-thunks";
 
 const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
 
@@ -6,7 +8,11 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
     const [name, setName] = useState(recipeName);
     const [notes, setRecipeNotes] = useState("notes default");
 
-    
+    const dispatch = useDispatch();
+
+    const syncInfo = () => {
+        dispatch(updateRecipieHeaderThunk({name, notes, description}))
+    }
 
     return(
         /*this row houses the recipe information section and its input fields*/
@@ -29,9 +35,9 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
                         <input className="form-control"
                                id={"titleInput"}
                                placeholder={"Recipe title"}
-                               defaultValue={recipeName}
-                               value={name}
-                               onChange={(event) => setName(event.target.value)}
+                               onChange={(event) => {
+                                   setName(event.target.value)
+                                   syncInfo()}}
                         />
                         <label htmlFor="titleInput">Recipe title</label>
                     </div>
@@ -49,9 +55,11 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
                         <div className="form-group mt-2">
                             <textarea className="form-control"
                                       rows={4}
-                                      onChange={(event) => {setDescription(event.target.value)}}
-                                      value={description}
-                            />
+                                      placeholder={"Enter description"}
+                                      onChange={(event) => {
+                                          setDescription(event.target.value)
+                                          syncInfo()
+                                      }}></textarea>
                         </div>
                     }
                 </div>
@@ -67,9 +75,11 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
                         <div className="form-group mt-2">
                             <textarea className="form-control"
                                       rows={2}
-                                      onChange={(event) => {setRecipeNotes(event.target.value)}}
-                                      value={notes}
-                            />
+                                      placeholder={"Enter recipe notes"}
+                                      onChange={(event) => {
+                                          setRecipeNotes(event.target.value)
+                                          syncInfo()
+                                      }}></textarea>
                         </div>
                     }
                 </div>

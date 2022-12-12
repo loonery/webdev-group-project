@@ -1,10 +1,13 @@
 import axios from 'axios';
 
+
+
+
 // RECIPE_API is a string referring to our middle tier
 // const API_BASE = process.env.COFFEE_APP_API_BASE;
 // const RECIPE_API = "http://29b3-155-33-134-27.ngrok.io/api/coffees";
 
-const API_BASE = "http://localhost:4000/api/";
+const API_BASE = "http://localhost:4000/api";
 const RECIPE_API = `${API_BASE}/recipes`;
 
 
@@ -34,6 +37,20 @@ export const createRecipe = async (recipe) => {
     // const response = api.post(RECIPE_API, recipe)
     //     .then(response => response.data);
 }
+
+export const updateRecipieHeader = async (header) => {
+    return header;
+}
+
+export const updateRecipieIngredients = async (ingredients) => {
+    return ingredients;
+}
+
+export const updateRecipieSteps = async (steps) => {
+    return steps;
+}
+
+
 
 // export const deleteRecipe = async (rid) => {
 //     const response = await axios.delete(`${RECIPE_API}/${rid}`)

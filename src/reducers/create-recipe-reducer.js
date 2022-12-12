@@ -1,11 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {createRecipeThunk} from "../services/recipes-thunks" ;
+import {updateRecipieIngredientsThunk, updateRecipieStepsThunk, createRecipeThunk, updateRecipieHeaderThunk} from "../services/recipes-thunks" ;
 
 const initialState = {
     description: '',
+    name: '',
     notes: '',
-    ingredients: [],
-    steps: [],
+    ingredients: '',
+    steps: '',
     loading: false,
     error: null
 }
@@ -28,6 +29,17 @@ const createRecipeSlice = createSlice(
             [createRecipeThunk.rejected]: (state, action) => {
                 state.error = 403
                 state.loading = false
+            },
+            [updateRecipieHeaderThunk.fulfilled]: (state, {payload}) => {
+                state.name = payload.name;
+                state.description = payload.description;
+                state.notes = payload.notes;
+            },
+            [updateRecipieIngredientsThunk.fulfilled]: (state, {payload}) => {
+                state.ingredients = payload
+            },
+            [updateRecipieStepsThunk.fulfilled]: (state, {payload}) => {
+                state.steps = payload
             }
         },
         reducers: {

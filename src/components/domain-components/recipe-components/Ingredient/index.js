@@ -12,11 +12,9 @@ const Ingredient = ({editable}) => {
     const [ingredientTitle, setIngredientTitle] = useState("I am an ingredient");
     const [ingredientAmount, setIngredientAmount] = useState("ingredient amounts");
 
-    const ingredients = useSelector(state => state.createRecipe);
-
     const dispatch = useDispatch();
 
-    dispatch()
+    console.log("Here")
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-start">
