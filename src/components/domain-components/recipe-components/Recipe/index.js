@@ -36,7 +36,7 @@ const Recipe = ({modal, show, showFunction}) => {
 
     //fetch description from the createRecipe reducer
     const recipe = useSelector(state => state.createRecipe);
-    const currentUser = useSelector((state) => state.users)
+    const {currentUser, loading} = useSelector((state) => state.users);
 
     const dispatch = useDispatch();
 
@@ -136,6 +136,7 @@ const Recipe = ({modal, show, showFunction}) => {
                                         // console.log(recipe.name, recipe.description, recipe.notes);
                                         console.log('recipe = ', recipe);
                                         const r = {
+                                            author: currentUser._id,
                                             recipeName: recipe.name,
                                             recipeDescription: recipe.description,
                                             recipeNote: recipe.notes,
