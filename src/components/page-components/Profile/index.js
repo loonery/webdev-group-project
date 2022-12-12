@@ -11,8 +11,6 @@ const Profile = () => {
 
     const {currentUser, loading} = useSelector((state) => state.users);
 
-    console.log(currentUser)
-
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
@@ -73,15 +71,21 @@ const Profile = () => {
                     <div className="fw-bold fs-3 border rounded">
                         General Profile Information
                         <div className={'col fw-light fs-4'}>
-                            Name: {currentUser.userName}
+                            Name: {currentUser.firstName} {currentUser.lastName}
+                            <br/>
+                            Username: {currentUser.userName}
                             <button type={"button"}
                                     className={"btn btn-primary float-end me-4 mb-4"}
                                     onClick={handleLogout}>
                                 Logout
                             </button>
+                            <Link to={"/profile/edit-profile"}>
+                                <button type={"button"}
+                                        className={"btn btn-primary float-end me-4 mb-4"}>
+                                    Edit Profile
+                                </button>
+                            </Link>
                             <br/>
-                            Password: {currentUser.password}
-
                         </div>
                     </div>
 
