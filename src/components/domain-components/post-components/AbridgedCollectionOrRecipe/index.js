@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {solid} from "@fortawesome/fontawesome-svg-core/import.macro";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Recipe from "../../recipe-components/Recipe";
 import RecipeDisplay from "../../recipe-components/Recipe/RecipeDisplay";
 import {useDispatch, useSelector} from "react-redux";
@@ -30,6 +30,14 @@ const AbridgedDomainItem = (
         // chevron button needs to display a different kind of details page than a modal because nested modals
         // are not permitted
     const [showingDomainItem, setShowingDomainItem] = useState(false);
+
+    const dispatch = useDispatch();
+
+    //const {users, loading} = useSelector((state) => state.users)
+    //useEffect(() => {dispatch(findUserByIdThunk(recipe.author))}, []);
+
+
+    //console.log("user from abdrige",users ? users : "no user")
 
     return (
         <>
