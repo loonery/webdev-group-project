@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ModalComponent from '../ModalComponent';
 import { Link, useParams } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-//import style css from index.css
-import styles from './index.css';
 
 
 
