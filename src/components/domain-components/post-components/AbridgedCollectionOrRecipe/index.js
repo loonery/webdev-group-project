@@ -4,18 +4,19 @@ import {useState} from "react";
 import Recipe from "../../recipe-components/Recipe";
 
 // the abridged recipe is a recipe's or collection's representation that appears outside its details page
-const AbridgedDomainItem = (recipe, {editingParentComponent}) => {
+const AbridgedRecipe = (recipe, {editingParentComponent}) => {
 
     // todo: determine the how the domain object type determines the rendering of this component
         // chevron button needs to display a different kind of details page than a modal because nested modals
         // are not permitted
     const [showingDomainItem, setShowingDomainItem] = useState(false);
+    const thisRecipe = recipe.recipe;
 
     return (
         <>
             {/*pass the recipe modal component information about whether it's showing itself, and how to close itself*/}
             <Recipe modal={true}
-                    recipe={recipe}
+                    recipe={thisRecipe}
                     show={showingDomainItem}
                     showFunction={() => setShowingDomainItem(false)}/>
 
@@ -25,14 +26,14 @@ const AbridgedDomainItem = (recipe, {editingParentComponent}) => {
                     {/* this flex div houses all the content in the abridged recipe, as well as the arrow */}
                     <div className="flex-grow-1 me-4">
                         <div>
-                            <span className="fs-5">{recipe.recipeName}</span>
+                            <span className="fs-5">{thisRecipe.recipeName}</span>
                             <span className="fs-5">&ensp;&middot;&ensp;</span>
-                            <span className="text-secondary">{recipe.author}</span>
+                            <span className="text-secondary">{thisRecipe.author}</span>
                         </div>
 
                         {/*todo: cut the description once it reaches a certain length*/}
                         <p className="pt-1 text-secondary">
-                            {recipe.recipeDescription}
+                            {thisRecipe.recipeDescription}
                         </p>
                     </div>
 
@@ -66,4 +67,4 @@ const AbridgedDomainItem = (recipe, {editingParentComponent}) => {
         </>
     );
 }
-export default AbridgedDomainItem;
+export default AbridgedRecipe;

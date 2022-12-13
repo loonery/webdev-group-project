@@ -1,4 +1,4 @@
-import DomainItemCollection from "../../domain-components/recipe-components/RecipeCollection";
+import RecipeCollection from "../../domain-components/recipe-components/RecipeCollection";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from "react";
 import {useNavigate} from "react-router";
@@ -99,11 +99,11 @@ const Profile = () => {
 
                 <div className="d-flex">
                     {/*todo: user's saved recipes should be listed here*/}
-                    <div className="pe-2"><DomainItemCollection author={currentUser}/></div>
+                    <div className="pe-2"><RecipeCollection recipesInCollection={recipes} author={currentUser}/></div>
 
 
                     {/*todo: user's saved collections should be listed here*/}
-                    <div className="ps-2"><DomainItemCollection/></div>
+                    <div className="ps-2"><RecipeCollection/></div>
                 </div>
 
                     <div className="border rounded">

@@ -7,12 +7,14 @@ import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faSave} from "@fortawesome/free-solid-svg-icons";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 import currentUser from "../../../page-components/Profile/CurrentUser";
+import AbridgedRecipe from "../../post-components/AbridgedCollectionOrRecipe";
 
-const DomainItemCollection = ({author = {firstName: "",
-                                                                      lastName : ""},
-                                  recipesInCollection = []}
+const RecipeCollection = ({author = {firstName: "", lastName : ""},
+                           recipesInCollection = []}
 ) => {
 
+
+    console.log(recipesInCollection);
     const [editingCollection, setEditingCollection] = useState(false);
     const [collectionTitleInput, setCollectionTitleInput] = useState(author.firstName + "'s Created Recipes");
     const [collectionDescriptionInput, setCollectionDescriptionInput] = useState("Coffee recipes made by " + author.firstName);
@@ -38,6 +40,7 @@ const DomainItemCollection = ({author = {firstName: "",
                         <div className="fs-6 text-secondary">
                             <span>{author.firstName + " " + author.lastName}</span>
                             <span className="fs-6">&ensp;&middot;&ensp;</span>
+                            {/*todo : place some other metadata here*/}
                         </div>
 
                         {/*collection description*/}
@@ -112,8 +115,9 @@ const DomainItemCollection = ({author = {firstName: "",
                                 recipesInCollection.map((recipe, index) => (
                                     <li className="list-group-item">
                                         {/*// todo: make sure these are rendered as recipes*/}
-                                        <AbridgedCollectionOrRecipe recipe={recipe}
-                                                                    editingParentComponent={editingCollection}/>
+                                        <AbridgedRecipe key={recipe._id}
+                                                        recipe={recipe}
+                                                        editingParentComponent={editingCollection}/>
                                     </li>
                                 ))
                              }
@@ -133,4 +137,4 @@ const DomainItemCollection = ({author = {firstName: "",
         </div>
     );
 }
-export default DomainItemCollection;
+export default RecipeCollection;

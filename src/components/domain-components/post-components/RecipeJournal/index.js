@@ -1,4 +1,4 @@
-import AbridgedDomainItem from "../AbridgedCollectionOrRecipe";
+import AbridgedRecipe from "../AbridgedCollectionOrRecipe";
 import {useState} from "react";
 import CommentEntry from "./Comments/CommentEntry";
 import CommentsSection from "./Comments";
@@ -57,7 +57,7 @@ const RecipeJournal = () => {
 
                     {/*recipe information for recipe related to the post*/}
                     <div className="border rounded py-3 px-3">
-                        <AbridgedDomainItem/>
+                        <AbridgedRecipe/>
                     </div>
 
                     {/*comment and like buttons, and stats */}

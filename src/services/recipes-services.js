@@ -55,7 +55,7 @@ export const updateRecipieSteps = async (steps) => {
 // }
 
 export const findUserAuthoredRecipes = async (uid) => {
-    const response = await axios.get(`${RECIPE_API}/${uid}`)
+    const response = await axios.get(`${RECIPE_API}/author/${uid}`)
     return response.data
 }
 
