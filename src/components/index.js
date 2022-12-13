@@ -2,11 +2,12 @@ import HomeComponent from "./page-components/Homepage";
 import ProfileComponent from "./page-components/Profile";
 import LoginComponent from "./page-components/Login"
 import RegisterComponent from "./page-components/Register"
-import {Routes, Router, Route} from "react-router-dom";
+import {Routes, Route} from "react-router";
 import NavigationBar from "./NavigationBar";
 import Creator from "./page-components/Creator";
 import Demo from "./page-components/Demo";
 import ModalComponent from "./page-components/ModalComponent";
+import EditProfileComponent from "./page-components/Profile/edit-profile";
 
 function  Coffee() {
     return(
@@ -22,6 +23,8 @@ function  Coffee() {
                            element={<HomeComponent/>}/>
                     <Route path="profile/*"
                            element={<ProfileComponent/>}/>
+                    <Route path="profile/edit-profile"
+                           element={<EditProfileComponent/>}/>
                     <Route path="login"
                            element={<LoginComponent/>}/>
                     <Route path="register"

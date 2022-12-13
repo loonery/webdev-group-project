@@ -1,12 +1,14 @@
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {updateRecipieHeaderThunk} from "../../../../services/recipes-thunks";
 
-const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
+const RecipeHeader = () => {
 
-    const [description, setDescription] = useState("description default");
-    const [name, setName] = useState(recipeName);
-    const [notes, setRecipeNotes] = useState("notes default");
+    const recipe = useSelector((state) => state.createRecipe)
+
+    const [description, setDescription] = useState(recipe.name);
+    const [name, setName] = useState(recipe.description);
+    const [notes, setRecipeNotes] = useState(recipe.notes);
 
     const dispatch = useDispatch();
 
@@ -19,30 +21,20 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
         <div className={"row"}>
 
             {/*title text*/}
-            {!editing &&
-                <>
-                <div className="d-flex justify-content-center mb-1">
-                    <div className="fs-2">{recipeName}</div>
+
+            <div className="d-flex justify-content-center my-3">
+                <div className="form-floating w-50">
+                    <input className="form-control"
+                           id={"titleInput"}
+                           placeholder={"Recipe title"}
+                           defaultValue={recipe.name}
+                           onChange={(event) => {
+                               setName(event.target.value)
+                               syncInfo()}}
+                    />
+                    <label htmlFor="titleInput">Recipe title</label>
                 </div>
-                <div className="d-flex justify-content-center mb-1">
-                    <div className="fs-6">{recipeAuthor}</div>
-                </div>
-                </>
-            }
-            {editing &&
-                <div className="d-flex justify-content-center my-3">
-                    <div className="form-floating w-50">
-                        <input className="form-control"
-                               id={"titleInput"}
-                               placeholder={"Recipe title"}
-                               onChange={(event) => {
-                                   setName(event.target.value)
-                                   syncInfo()}}
-                        />
-                        <label htmlFor="titleInput">Recipe title</label>
-                    </div>
-                </div>
-            }
+            </div>
 
 
 
@@ -50,18 +42,16 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
             <div className="mt-3">
                 <div className="fs-4 border-top mt-2 pt-2">Description</div>
                 <div className="rounded pe-3">
-                    {!editing && description}
-                    {editing &&
-                        <div className="form-group mt-2">
+                    <div className="form-group mt-2">
                             <textarea className="form-control"
                                       rows={4}
                                       placeholder={"Enter description"}
+                                      defaultValue={recipe.description}
                                       onChange={(event) => {
                                           setDescription(event.target.value)
                                           syncInfo()
                                       }}></textarea>
                         </div>
-                    }
                 </div>
             </div>
 
@@ -70,18 +60,16 @@ const RecipeHeader = ({recipeName, recipeAuthor, editing}) => {
             <div className="mt-3">
                 <div className="fs-4">Notes</div>
                 <div className="pb-3 pe-3 rounded">
-                    {!editing && notes}
-                    {editing &&
-                        <div className="form-group mt-2">
-                            <textarea className="form-control"
-                                      rows={2}
-                                      placeholder={"Enter recipe notes"}
-                                      onChange={(event) => {
-                                          setRecipeNotes(event.target.value)
-                                          syncInfo()
-                                      }}></textarea>
-                        </div>
-                    }
+                    <div className="form-group mt-2">
+                        <textarea className="form-control"
+                                  rows={2}
+                                  placeholder={"Enter recipe notes"}
+                                  defaultValue={recipe.notes}
+                                  onChange={(event) => {
+                                      setRecipeNotes(event.target.value)
+                                      syncInfo()
+                                  }}></textarea>
+                    </div>
                 </div>
             </div>
         </div>

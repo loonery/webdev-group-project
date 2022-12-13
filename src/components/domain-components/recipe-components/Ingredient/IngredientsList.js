@@ -1,10 +1,12 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {updateRecipieIngredientsThunk} from "../../../../services/recipes-thunks";
 import {useState} from "react";
 
-const IngredientsList = ({editingRecipe}) => {
+const IngredientsList = () => {
 
-    let [ingredients, setIngredients] = useState('')
+    const recipe = useSelector((state) => state.createRecipe)
+
+    let [ingredients, setIngredients] = useState(recipe.ingredients)
 
     const dispatch = useDispatch();
 
@@ -18,16 +20,15 @@ const IngredientsList = ({editingRecipe}) => {
 
             {/* section header */}
             <div className="fs-2 border-0 border-top">Ingredients</div>
-            {editingRecipe &&
                 <div className="text-secondary fs-6">
                     Enter the ingredients for your recipe below.
                     <textarea className="form-control" rows="4"
                               placeholder={"Enter ingredients"}
+                              defaultValue={recipe.ingredients}
                         onChange={(event) => {
                         setIngredients(event.target.value)
                         syncInfo() }}></textarea>
                 </div>
-            }
 
 
             {/*/!*ingredient list*!/*/}
