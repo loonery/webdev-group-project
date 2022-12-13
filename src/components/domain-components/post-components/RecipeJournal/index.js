@@ -91,8 +91,8 @@ const RecipeJournal = (
                      picture information*/}
                     <div className="flex-grow-1 fs-6 ms-3">
                         {/*user information in the card*/}
-                        <div className="pt-2">{userName}</div>
-                        <div className="text-secondary">{userName} - <span>{date}</span></div>
+                        <div className="pt-2">{post? post.author.userName : userName}</div>
+                        <div className="text-secondary">{post? post.author.userName : userName} - <span>{date}</span></div>
                     </div>
                 </div>
 
