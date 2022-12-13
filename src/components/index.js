@@ -28,7 +28,7 @@ function  Coffee() {
                            element={<RegisterComponent/>}/>
                     <Route path="create/*"
                            element={<Creator/>}/>
-                    <Route path="demo/*"
+                    <Route path="search/*"
                            element={<Demo/>}/>
                     <Route path="details/:id"
                             element={<ModalComponent/>}/>

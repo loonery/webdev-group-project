@@ -133,7 +133,7 @@ function Demo() {
                 <Modal.Body>
                     <p>{selectedItem && selectedItem.description}</p>
 
-                    <Link to={`/demo/details/${selectedItem && selectedItem.id}`} onClick={hideDetails} as={"a"}>
+                    <Link to={`/search/details/${selectedItem && selectedItem.id}`} onClick={hideDetails} as={"a"}>
                         More Details ... Click for Ingredients
                     </Link>
 
