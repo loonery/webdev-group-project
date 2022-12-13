@@ -13,7 +13,8 @@ const NavigationBar = () => {
      const tabs = [
         {activePath: '/', tabName: 'Home'},
         {activePath: '/profile', tabName: 'Profile'},
-        {activePath: '/create', tabName: 'Create'}]
+        {activePath: '/create', tabName: 'Create'},
+        {activePath: '/search', tabName: 'Search'}]
 
     return(
             <div className="border-bottom pb-3 pt-2 mb-4">

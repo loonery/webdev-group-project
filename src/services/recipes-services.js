@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const API_BASE = "http://localhost:4000/api";
 const RECIPE_API = `${API_BASE}/recipes`;
-
+const COLLECTION_API = `${API_BASE}/collections`;
 
 
 // // the asynchronous functions take advantage of multi-threading capability
@@ -35,12 +35,34 @@ export const findRecipeById = async (rid) => {
 
 export const createRecipe = async (recipe) => {
     const response = await axios.post(RECIPE_API, recipe);
-    console.log("create recipe recipes-service.js, recipe input")
-    console.log(recipe)
     return response.data
     // const response = api.post(RECIPE_API, recipe)
     //     .then(response => response.data);
 }
+
+export const createCollection = async (collection) => {
+    const response = await axios.post(COLLECTION_API, collection);
+    return response.data
+    // const response = api.post(RECIPE_API, recipe)
+    //     .then(response => response.data);
+}
+
+export const updateCreating = async () => {
+    return true;
+}
+
+export const updateCreatingCollection = async () => {
+    return true;
+}
+
+export const updateExitCreating = async () => {
+    return true;
+}
+
+export const updateExitCreatingCollection = async () => {
+    return true;
+}
+
 
 export const updateRecipieHeader = async (header) => {
     return header;

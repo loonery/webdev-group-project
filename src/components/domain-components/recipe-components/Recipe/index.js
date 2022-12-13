@@ -1,5 +1,5 @@
 // react library imports
-import {useState} from "react";
+import React, {useState} from "react";
 
 // fontawesome component imports
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -19,7 +19,9 @@ import {faGenderless} from "@fortawesome/free-solid-svg-icons/faGenderless";
 import {faSignsPost} from "@fortawesome/free-solid-svg-icons/faSignsPost";
 import {faIndustry} from "@fortawesome/free-solid-svg-icons/faIndustry";
 import {useDispatch, useSelector} from "react-redux";
-import {createRecipeThunk} from "../../../../services/recipes-thunks";
+import {createRecipeThunk, exitCreatingRecipeThunk} from "../../../../services/recipes-thunks";
+import Creator from "../../../page-components/Creator";
+import {Link} from "react-router-dom";
 
 const Recipe = ({modal, show, showFunction}) => {
 
@@ -33,6 +35,9 @@ const Recipe = ({modal, show, showFunction}) => {
 
     const [editing, setEditing] = useState(false);
     const [editable, setEditable] = useState(true);
+    const [success, setSuccess] = useState(false)
+    const [message, setMessage] = useState('')
+    const [returned, setReturned] = useState(false);
 
     //fetch description from the createRecipe reducer
     const recipe = useSelector(state => state.createRecipe);
@@ -40,10 +45,46 @@ const Recipe = ({modal, show, showFunction}) => {
 
     const dispatch = useDispatch();
 
+    console.log(recipe)
+
+    const checkRecipe = () => {
+        if (recipe.name === '') {
+            setMessage('Please enter a recipe title.');
+            return false
+        }
+        else if (recipe.description === '') {
+            setMessage('Please enter a description.');
+            setSuccess(false);
+            return false
+        }
+        else if (recipe.notes === '') {
+            setMessage('Please enter your notes.');
+            setSuccess(false);
+            return false
+        }
+        else if (recipe.ingredients === '') {
+            setMessage('Please enter your ingredients.');
+            setSuccess(false);
+            return false
+        }
+
+        else if (recipe.steps === '') {
+            setMessage('Please enter your steps.');
+            setSuccess(false);
+            return false
+        }
+        else {
+            setMessage('You have successfully created this recipe');
+            return true
+        }
+    }
+
 
     // todo: style the text area to not allow resizing
     return(
         <>
+            {success && returned && message !== '' && <div className={'m-2 p-3 alert alert-success'}>{message}</div>}
+            {!success && returned && <div className={'m-2 p-3 alert alert-danger'}>{message}</div>}
             {modal &&
             <Modal show={show} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Body className="modal-body">
@@ -117,7 +158,7 @@ const Recipe = ({modal, show, showFunction}) => {
 
                         <div>
                             <button className="btn btn-outline-dark rounded-pill"
-                                    onClick={() => {return}}>
+                                    onClick={() => dispatch(exitCreatingRecipeThunk())}>
                                 <FontAwesomeIcon icon={faCancel}/> Cancel Editing
                             </button>
                         </div>
@@ -132,19 +173,18 @@ const Recipe = ({modal, show, showFunction}) => {
                             <button className="btn btn-outline-dark rounded-pill"
                                     onClick={() => {
                                         setEditing(false);
-                                        console.log("recipe/index.js");
-                                        // console.log(recipe.name, recipe.description, recipe.notes);
-                                        console.log('recipe = ', recipe);
-                                        const r = {
-                                            author: currentUser._id,
-                                            recipeName: recipe.name,
-                                            recipeDescription: recipe.description,
-                                            recipeNote: recipe.notes,
-                                            ingredients: recipe.ingredients,
-                                            steps: recipe.steps
+                                        if (checkRecipe()) {
+                                            const r = {
+                                                author: currentUser._id,
+                                                recipeName: recipe.name,
+                                                recipeDescription: recipe.description,
+                                                recipeNote: recipe.notes,
+                                                ingredients: recipe.ingredients,
+                                                steps: recipe.steps
+                                            }
+                                            dispatch(createRecipeThunk(r));
                                         }
-
-                                        dispatch(createRecipeThunk(r)) ;
+                                        setReturned(true);
 
                                     }}>
                                 <FontAwesomeIcon icon={faIndustry}/> Generate Recipe
@@ -154,16 +194,13 @@ const Recipe = ({modal, show, showFunction}) => {
 
                     {/*outer col houses the entire form*/}
                     <div className={"col"}>
-                        <RecipeHeader recipeName={recipeName}
-                                      recipeNotes={recipeNotes}
-                                      recipeAuthor={recipeAuthor}
-                                      editing={true}/>
+                        <RecipeHeader/>
 
                         {/*list of ingredients*/}
-                        <IngredientsList editingRecipe={true}/>
+                        <IngredientsList/>
 
                         {/*list of steps to complete the recipe*/}
-                        <RecipeStepList editingRecipe={true}/>
+                        <RecipeStepList/>
                     </div>
                 </div>
             }

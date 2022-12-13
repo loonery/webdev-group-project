@@ -35,6 +35,11 @@ export const findUserById = async (userId) => {
     console.log("user service findUserById", response.data)
     return response.data;
 }
+export const updateUser = async (user) => {
+    await axios.put(`${USER_API}/${user.id}`, user);
+    return user;
+}
+
 /*
 export const deleteUser = async (tid) => {
     const response = await axios

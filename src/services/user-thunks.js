@@ -23,3 +23,7 @@ export const logoutUserThunk = createAsyncThunk(
 export const profileUserThunk = createAsyncThunk(
     'users/profileUser', async () => await service.profile()
 )
+
+export const updateCurrentUserThunk = createAsyncThunk(
+    'users/profileUser', async (user) => await service.updateUser(user)
+)
