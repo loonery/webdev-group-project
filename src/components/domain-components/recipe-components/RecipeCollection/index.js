@@ -7,6 +7,7 @@ import {faCancel} from "@fortawesome/free-solid-svg-icons/faCancel";
 import {faSave} from "@fortawesome/free-solid-svg-icons";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
+import {useSelector} from "react-redux";
 
 const DomainItemCollection = () => {
 
@@ -23,12 +24,14 @@ const DomainItemCollection = () => {
     const [collectionTitleInput, setCollectionTitleInput] = useState(collection.title);
     const [collectionDescriptionInput, setCollectionDescriptionInput] = useState(collection.description)
 
+    const users = useSelector((state) => state.users);
+
     return (
         <div className="card">
             <div className="card-header">
                 {/* #################################### NOT EDITING HEADER ####################################*/}
                 {/*the collection title*/}
-                {!editingCollection &&
+                {!users.collection &&
                     <>
                         <div className="d-flex justify-content-between pb-1">
                             <div className="fs-1">Collection Title</div>
@@ -56,7 +59,7 @@ const DomainItemCollection = () => {
                     </>
                 }
                 {/*######################################## EDITING HEADER ########################################*/}
-                {editingCollection &&
+                {users.creating &&
                     <>
                         <div className="d-flex justify-content-between pe-2 py-3">
                             <button className="btn btn-outline-dark rounded-pill"

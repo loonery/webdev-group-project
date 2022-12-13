@@ -5,7 +5,8 @@ import React, {useState} from "react";
 import Recipe from "../../domain-components/recipe-components/Recipe";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {setCreatingRecipeThunk} from "../../../services/recipes-thunks";
+import {setCreatingCollectionThunk, setCreatingRecipeThunk} from "../../../services/recipes-thunks";
+import RecipeCollection from "../../domain-components/recipe-components/RecipeCollection";
 
 const Creator = () => {
 
@@ -17,7 +18,8 @@ const Creator = () => {
     const {currentUser} = useSelector((state) => state.users)
     const recipe = useSelector((state) => state.createRecipe)
 
-    console.log(recipe)
+    console.log("CREATING RECIPE", recipe.creating && recipe.creatingRecipe)
+    console.log("CREATING COLLECTION", recipe.creating && recipe.creatingCollection)
 
     if (!currentUser)
         return (
@@ -53,7 +55,6 @@ const Creator = () => {
                     <div className="col">
                         <button className="btn btn-dark w-100"
                                 onClick={() => {
-                                    console.log(recipe)
                                     dispatch(setCreatingRecipeThunk())
                                 }}>
                             Create a Recipe
@@ -61,17 +62,23 @@ const Creator = () => {
                         </button>
                     </div>
 
-                    {/*todo - disable this if the user is not premium*/}
+                    {currentUser.role === "PREMIUM" &&
                     <div className="col">
                         <button className="btn btn-dark w-100"
-                                onClick={() => {}}>
+                                onClick={() => {dispatch(setCreatingCollectionThunk())}}>
                             Create a Recipe Collection
                             &ensp;<FontAwesomeIcon icon={faBoxesStacked}/>
                         </button>
-                    </div>
+                    </div>}
 
                     {recipe.creating && recipe.creatingRecipe &&
                         <Recipe modal={false} show={false} showFunction={() => {
+                            return
+                        }}/>
+                    }
+
+                    {recipe.creating && recipe.creatingCollection &&
+                        <RecipeCollection modal={false} show={false} showFunction={() => {
                             return
                         }}/>
                     }

@@ -4,7 +4,11 @@ import {
     updateRecipieStepsThunk,
     createRecipeThunk,
     updateRecipieHeaderThunk,
-    setCreatingRecipeThunk, exitCreatingRecipeThunk
+    setCreatingRecipeThunk,
+    exitCreatingRecipeThunk,
+    exitCreatingCollectionThunk,
+    createCollectionThunk,
+    setCreatingCollectionThunk
 } from "../services/recipes-thunks" ;
 
 const initialState = {
@@ -13,8 +17,11 @@ const initialState = {
     notes: '',
     ingredients: '',
     steps: '',
+    recipes: [],
+    collection: [],
     creating: false,
     creatingRecipe: false,
+    creatingCollection: false,
     loading: false,
     error: null
 }
@@ -24,8 +31,14 @@ const createRecipeSlice = createSlice(
         name:'createRecipeSlice',
         initialState,
         extraReducers: {
+            [setCreatingCollectionThunk.fulfilled]: (state, action) => {
+                state.creating = true
+                state.creatingCollection = true
+                state.creatingRecipe = false
+            },
             [setCreatingRecipeThunk.fulfilled]: (state, action) => {
                 state.creating = true
+                state.creatingCollection = false
                 state.creatingRecipe = true
             },
             [exitCreatingRecipeThunk.pending]: (state, action) => {
@@ -41,7 +54,24 @@ const createRecipeSlice = createSlice(
                 state.creating = false
                 state.creatingRecipe = false
             },
+            [exitCreatingCollectionThunk.fulfilled]: (state, action) => {
+                state.loading = false
+                state.recipes = []
+                state.collection = []
+                state.creating = false
+                state.creatingCollection = false
+            },
             [createRecipeThunk.fulfilled]: (state, {payload}) => {
+                state.loading = false
+                state.name = ''
+                state.description = ''
+                state.notes = ''
+                state.ingredients = ''
+                state.steps = ''
+                state.creating = false
+                state.creatingRecipe = false
+            },
+            [createCollectionThunk.fulfilled]: (state, {payload}) => {
                 state.loading = false
                 state.name = ''
                 state.description = ''
