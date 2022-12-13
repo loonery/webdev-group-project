@@ -4,17 +4,64 @@ import CommentEntry from "./Comments/CommentEntry";
 import CommentsSection from "./Comments";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
+import {useDispatch, useSelector} from "react-redux";
+import {findRecipeByIdThunk} from "../../../../services/recipes-thunks";
 
-const RecipeJournal = () => {
+const RecipeJournal = (
+    {
+        post = {
+            "_id": "5f9f1b9b9b9b9b9b9b9b9b9b",
+            "author": {
+                "$oid": "639634380b3ccf1f61dfa683"
+            },
+            "recipe": null,
+            "recipe_external": 4,
+            "photos": [],
+            "title": "sampel title of post",
+            "content": "sample content of post",
+            "likes": 0,
+            "date": {
+                "$date": {
+                    "$numberLong": "1670816460852"
+                }
+            },
+        }
+    }
+
+) => {
     // todo: refactor as modal?
     // todo: delete static image source
     const imageSource = './local_images/dummy_webdev_2.jpg';
     const userName = "Coffee Beans";
     const date = new Date().toDateString();
-    const postText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut" +
-        " labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
+    // const postText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut" +
+    //     " labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
 
     const [commenting, setCommenting] = useState(false);
+    // const {recipe} = useSelector(state => state.recipesData.recipe);
+    // const dispatch = useDispatch();
+    //
+    // const recipeId = post.recipe;
+    // const externalRecipeId = post.recipe_external;
+
+    // get recipe by recipe id, if not exists, get external Recipe by external recipe id
+    // if (recipeId) {
+    //     // get recipe by recipe id
+    //     dispatch(findRecipeByIdThunk(recipeId));
+    //     //const recipe_summary = recipes.recipe.recipeDescription
+    //     console.log("recipe journal recipe by recipeId", recipe.recipeDescription);
+    // }
+    // else if (externalRecipeId) {
+    //     // get external recipe by external recipe id
+    //     // const recipe = dispatch(findRecipeByIdThunk(externalRecipeId));
+    //     const recipe_summary ="A coffee recipe from public API"
+    // }
+    // else{
+    //     const recipe_summary ="A coffee recipe by default text"
+    // }
+
+    const postText = post.content;
+    const recipe = post.recipe;
 
     // todo: add dynamic rendering of comments box
     return(
@@ -53,18 +100,18 @@ const RecipeJournal = () => {
                 <div className={"ps-4 pe-4"}>
 
                     {/*user post text*/}
-                    <p className="mt-3">{postText}</p>
+                    <p className="mt-3">{post.content}</p>
 
                     {/*recipe information for recipe related to the post*/}
                     <div className="border rounded py-3 px-3">
-                        <AbridgedDomainItem/>
+                        <AbridgedDomainItem recipe={recipe} />
                     </div>
 
                     {/*comment and like buttons, and stats */}
                     <div className={'pt-4 ps-2 pe-2'}>
                         {/*todo: format this text to be significantly smaller*/}
                         {/*todo: Make the likes section a link to the list of people who liked this post*/}
-                        <span>0 likes</span>
+                        <span>{post.likes} likes</span>
                         <span>&ensp;|&ensp;</span>
                         <span>10 comments</span>
 

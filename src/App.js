@@ -8,6 +8,7 @@ import createRecipeReducer from "./reducers/create-recipe-reducer";
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
 import CurrentUser from "./components/page-components/Profile/CurrentUser";
+import postsReducer from "./reducers/posts-reducer";
 /**
  * The store for the application
  */
@@ -15,7 +16,8 @@ const store = configureStore({
     reducer: {
         recipesData: recipesReducer,
         users: userReducer,
-        createRecipe: createRecipeReducer
+        createRecipe: createRecipeReducer,
+        posts: postsReducer
     }
 });
 

@@ -1,13 +1,20 @@
-import react, {useState} from 'react';
+import react, {useEffect, useState} from 'react';
 import CreateAndEditRecipeJournalForm
     from "./CreateAndEditRecipeJournalForm";
 import RecipeJournal from "./index";
 import SearchBar from "../../../SearchBar";
+import {useDispatch, useSelector} from "react-redux";
+import {findPostsThunk} from "../../../../services/posts-thunks";
 
 const RecipeJournalFeed = () => {
 
-    const posts = [{}, {}, {}, {}, {}, {}];
+    // const posts = [{}, {}, {}, {}, {}, {}];
+    const dispatch = useDispatch();
+    const {posts, loading} = useSelector(state => state.posts)
+    useEffect(() => {dispatch(findPostsThunk())}, [])
     const [posting, setPosting] = useState(false);
+
+
 
     return(
         // container row for the list group
@@ -31,10 +38,13 @@ const RecipeJournalFeed = () => {
                 }
 
                 {/*the rest of the posts appear below the post currently being created*/}
+                {console.log("post", loading, posts)}
                 {
+                    // posts.map((post, index) => (
                     posts.map((post, index) => (
-                        <RecipeJournal/>
+                        <RecipeJournal key={post._id} post={post} />
                     ))
+
                 }
             </div>
         </div>
