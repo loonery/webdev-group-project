@@ -13,8 +13,6 @@ const RecipeCollection = ({author = {firstName: "", lastName : ""},
                            recipesInCollection = []}
 ) => {
 
-
-    console.log(recipesInCollection);
     const [editingCollection, setEditingCollection] = useState(false);
     const [collectionTitleInput, setCollectionTitleInput] = useState(author.firstName + "'s Created Recipes");
     const [collectionDescriptionInput, setCollectionDescriptionInput] = useState("Coffee recipes made by " + author.firstName);
