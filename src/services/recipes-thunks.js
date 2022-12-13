@@ -13,6 +13,11 @@ export const findRecipesThunk = createAsyncThunk(
     'recipes/findRecipes', async () => await service.findRecipes()
 )
 
+// find recipe by recipe id
+export const findRecipeByIdThunk = createAsyncThunk(
+    'recipes/findRecipeById', async (rid) =>
+        await service.findRecipeById(rid) )
+
 export const createRecipeThunk = createAsyncThunk(
     'createRecipe',
     async (recipe) => await createRecipe(recipe)

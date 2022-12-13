@@ -5,6 +5,9 @@ export const findUserThunk = createAsyncThunk(
     'users/findUsers', async (user) => await service.findUser(user)
 )
 
+export const findUserByIdThunk = createAsyncThunk(
+    'users/findUserById', async (userId) => await service.findUserById(userId))
+
 export const registerUserThunk = createAsyncThunk(
     'users/registerUser', async (user) => await service.signup(user)
 )

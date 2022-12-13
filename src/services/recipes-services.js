@@ -26,6 +26,13 @@ export const findRecipes = async () => {
     return recipes;                   // return the recipes array
 }
 
+// find recipe by recipe id
+export const findRecipeById = async (rid) => {
+    const response = await axios.get(`${RECIPE_API}/${rid}`);
+    const recipe = response.data;
+    return recipe;
+}
+
 export const createRecipe = async (recipe) => {
     const response = await axios.post(RECIPE_API, recipe);
     return response.data

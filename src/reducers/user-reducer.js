@@ -1,13 +1,20 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {loginUserThunk, logoutUserThunk, profileUserThunk, registerUserThunk} from "../services/user-thunks";
+import {
+    findUserByIdThunk,
+    loginUserThunk,
+    logoutUserThunk,
+    profileUserThunk,
+    registerUserThunk
+} from "../services/user-thunks";
+import {findUserById} from "../services/user-services";
 
 const userReducer = createSlice(
     {
         name: 'users',
         initialState: {
             loading: false,
-            users: [],
             currentUser: null,
+            authorById: null,
             error: null
         },
         extraReducers: {
@@ -43,6 +50,11 @@ const userReducer = createSlice(
                     state.error = 403
                     state.currentUser = null
                 },
+            [findUserByIdThunk.fulfilled]: (state, action) => {
+                state.authorById = action.payload
+                state.error = null
+                console.log(state.authorById)
+            }
         },
         reducers: {}
     });
