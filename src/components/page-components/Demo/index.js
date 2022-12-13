@@ -4,6 +4,10 @@ import ModalComponent from '../ModalComponent';
 import { Link, useParams } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+//import style css from index.css
+import styles from './index.css';
+
 
 
 
@@ -11,9 +15,11 @@ import Button from 'react-bootstrap/Button';
 function Demo() {
     const [data, setData] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [showModal2, setShowModal2] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const [search, setSearch] = useState('');
     let { id } = useParams();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -43,11 +49,27 @@ function Demo() {
     function hideDetails() {
         // Hide the modal
         setShowModal(false);
+        setShowModal2(true);
+    }
+
+    function setUrl(){
+        window.location.href = `http://localhost:3000/demo/${selectedItem.id}`;
+    }
+
+    function hideDetails2() {
+        // Hide the modal
+
+        setShowModal2(false);
     }
 
     function handleSearchChange(event) {
         setSearch(event.target.value);
     }
+
+
+    const handleClick = (id) => {
+        navigate('/details', { state: { id } });
+    };
 
     function handleSearch() {
         if (search !== '') {
@@ -113,6 +135,34 @@ function Demo() {
                 </Modal.Header>
                 <Modal.Body>
                     <p>{selectedItem && selectedItem.description}</p>
+
+                    <Link to={`/demo/details/${selectedItem && selectedItem.id}`} onClick={hideDetails} as={"a"}>
+                        More Details ... Click for Ingredients
+                    </Link>
+
+
+                </Modal.Body>
+            </Modal>
+
+            <Modal style={{
+
+                position: 'absolute',
+                top:0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                width: '100%',
+                height: '100%',
+                background: "black"
+            }} show={showModal2} onHide={hideDetails2} width="100%" height="100%" size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title >{selectedItem && selectedItem.title}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body >
+                    <p>{selectedItem && selectedItem.description}</p>
+
+                    <img src={selectedItem && selectedItem.image} className="card-img-top" alt={selectedItem && selectedItem.title} />
+                    <br/>
                     <ul>
                         {selectedItem &&
                             selectedItem.ingredients.map(ingredient => (
@@ -120,18 +170,8 @@ function Demo() {
                             ))}
                     </ul>
 
-                    <Link to={`/demo/details/${selectedItem && selectedItem.id}`}
-                          as="a"
-                     >Click here to view product details
-                        {console.log(selectedItem && selectedItem.id)}
-                    </Link>
-
-                    <p>crfe</p>
                 </Modal.Body>
             </Modal>
-            {/*<ModalComponent param={selectedItem}/>*/}
-
-            {/*<ModalComponent show={showModal} showFunction={hideDetails} param={selectedItem}/>*/}
         </div>
     );
 }

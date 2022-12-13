@@ -1,17 +1,17 @@
-// add modal component to the page
 
 import React, {useState} from 'react';
+import {useLocation} from "react-router";
 
 
 const ModalComponent = (props) => {
-    const { match, id} = props;
 
-    console.log(props)
+    const {state} = useLocation();
+    const { id } = state;
 
     return (
         <div>
             <h1>Coffee Details</h1>
-            <p>Product ID: {id}</p>
+            <p>Product ID: </p>
         </div>
     );
 };
