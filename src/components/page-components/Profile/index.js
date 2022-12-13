@@ -7,8 +7,6 @@ import {logoutUserThunk} from "../../../services/user-thunks";
 
 const Profile = () => {
 
-    const imageSource = './local_images/dummy_webdev.jpg';
-
     const {currentUser, loading} = useSelector((state) => state.users);
 
     const dispatch = useDispatch();
@@ -53,39 +51,29 @@ const Profile = () => {
     else
         return (
             <>
-                <div className="row my-2 mx-2 py-1 px-1">
-
-                    {/* profile banner image */}
-                    <div className="d-flex rounded border py-3 ps-3">
-                        <div className="">
-                            <img className="rounded-circle"
-                                 height="150"
-                                 width={"150"}
-                                 src={imageSource}/>
-                        </div>
-                    </div>
-                </div>
-
                 {/* profile information */}
                 <div className="row my-2 mx-2 py-1 px-1">
                     <div className="fw-bold fs-3 border rounded">
                         General Profile Information
                         <div className={'col fw-light fs-4'}>
+                            <div className={"justify-content-end align-content-end"}>
+                                <button type={"button"}
+                                        className={"btn btn-primary float-end me-4 mb-4"}
+                                        onClick={handleLogout}>
+                                    Logout
+                                </button>
+                                <Link to={"/profile/edit-profile"}>
+                                    <button type={"button"}
+                                            className={"btn btn-primary float-end me-4 mb-4"}>
+                                        Edit Profile
+                                    </button>
+                                </Link>
+                            </div>
                             Name: {currentUser.firstName} {currentUser.lastName}
                             <br/>
                             Username: {currentUser.userName}
-                            <button type={"button"}
-                                    className={"btn btn-primary float-end me-4 mb-4"}
-                                    onClick={handleLogout}>
-                                Logout
-                            </button>
-                            <Link to={"/profile/edit-profile"}>
-                                <button type={"button"}
-                                        className={"btn btn-primary float-end me-4 mb-4"}>
-                                    Edit Profile
-                                </button>
-                            </Link>
                             <br/>
+                            Role: {currentUser.role}
                         </div>
                     </div>
 
